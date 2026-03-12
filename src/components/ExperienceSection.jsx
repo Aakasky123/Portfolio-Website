@@ -1,4 +1,4 @@
-﻿import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
 export default function ExperienceSection({ experience, subtitle }) {
@@ -15,35 +15,37 @@ export default function ExperienceSection({ experience, subtitle }) {
     >
       <SectionHeader title="Experience" subtitle={subtitle} />
 
-      <div className="mt-10 grid gap-6">
+      <div className="mt-10 grid gap-5">
         {experience.map((item, index) => (
           <article
             key={`${item.company}-${item.time}`}
-            className="timeline-card panel overflow-hidden"
+            className="panel relative overflow-hidden"
           >
-            <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[220px_minmax(0,1fr)]">
-              <div className="relative">
-                <span className="timeline-dot" aria-hidden="true" />
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-brand)]">
+            <div className="grid gap-5 p-5 sm:p-7 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-7">
+              {/* Left rail */}
+              <div className="flex flex-row items-center gap-3 lg:flex-col lg:items-start lg:border-r lg:border-[var(--color-border)] lg:pr-6">
+                <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-[var(--color-brand)]">
                   {String(index + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-4 inline-flex rounded-full border border-[var(--color-border)] bg-white/[0.04] px-3 py-1.5 text-sm text-[var(--color-text-muted)]">
+                </span>
+                <span className="hidden h-px w-3 bg-[var(--color-border)] lg:block" />
+                <p className="text-[0.82rem] text-[var(--color-text-muted)]">
                   {item.time}
                 </p>
               </div>
 
+              {/* Content */}
               <div>
-                <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--color-heading)]">
+                <h3 className="text-lg font-semibold tracking-[-0.02em] text-[var(--color-heading)] sm:text-xl">
                   {item.company}
                 </h3>
 
-                <ul className="mt-5 grid gap-3">
+                <ul className="mt-4 grid gap-2.5">
                   {item.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex gap-3 text-sm leading-7 text-[var(--color-text-muted)] sm:text-[0.96rem]"
+                      className="flex gap-3 text-sm leading-[1.75] text-[var(--color-text-muted)] sm:text-[0.94rem]"
                     >
-                      <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand)]" />
+                      <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-brand)] opacity-70" />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -56,3 +58,4 @@ export default function ExperienceSection({ experience, subtitle }) {
     </motion.section>
   );
 }
+

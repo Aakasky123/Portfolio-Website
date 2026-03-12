@@ -1,4 +1,4 @@
-﻿import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, FileText, Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 const SOCIAL_ICONS = {
@@ -9,6 +9,9 @@ const SOCIAL_ICONS = {
 
 export default function Hero({ content }) {
   const reduceMotion = useReducedMotion();
+  const roleParts = content.role.split(" • ");
+  const [roleLead, roleTail] = roleParts;
+
   const heroTransition = reduceMotion
     ? {}
     : {
@@ -27,18 +30,25 @@ export default function Hero({ content }) {
 
   return (
     <section id="home" className="section-anchor section-shell pt-10 sm:pt-14">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,420px)] lg:items-center">
-        <motion.div {...heroTransition} className="relative">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-surface-soft)] px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[var(--color-brand)]">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(360px,0.96fr)] lg:items-center lg:gap-10 xl:gap-12">
+        <motion.div {...heroTransition} className="relative lg:pr-3">
+          <div className="hero-name-badge flex w-fit items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-surface-soft)] px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[var(--color-brand)]">
             <span className="h-2 w-2 rounded-full bg-[var(--color-brand)] shadow-[0_0_18px_var(--color-brand)]" />
             {content.name}
           </div>
 
-          <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.95] tracking-[-0.06em] text-[var(--color-heading)] sm:text-5xl lg:text-7xl">
-            {content.role}
+          <h1 className="hero-title max-w-[12ch] text-4xl font-semibold tracking-[-0.06em] text-[var(--color-heading)] sm:max-w-none sm:text-5xl lg:text-[5.4rem] xl:text-7xl">
+            {roleTail ? (
+              <>
+                <span className="block">{roleLead}</span>
+                <span className="hero-title-second block">{roleTail}</span>
+              </>
+            ) : (
+              content.role
+            )}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] sm:text-lg">
+          <p className="hero-summary mt-7 max-w-[34rem] text-base text-[var(--color-text-muted)] sm:mt-8 sm:text-lg">
             {content.summary}
           </p>
 
@@ -77,25 +87,20 @@ export default function Hero({ content }) {
           </div>
         </motion.div>
 
-        <motion.aside {...panelTransition} className="panel hero-panel overflow-hidden">
-          <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-brand)]/60 to-transparent" />
-
-          <div className="grid gap-6 p-5 sm:p-7">
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-[var(--color-border)] bg-[radial-gradient(circle_at_top,_rgba(125,211,252,0.2),_transparent_60%),linear-gradient(180deg,_rgba(255,255,255,0.04),_rgba(255,255,255,0.01))] p-4">
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(125,211,252,0.08),transparent_55%)]" />
-              <div className="relative flex items-center justify-center">
-                <img
-                  src={content.profilePhotoUrl}
-                  alt={`${content.name} headshot`}
-                  loading="eager"
-                  width={320}
-                  height={320}
-                  className="h-56 w-56 rounded-[1.5rem] object-cover shadow-[0_30px_80px_-40px_rgba(56,189,248,0.85)] sm:h-72 sm:w-72"
-                />
-              </div>
+        <motion.aside {...panelTransition} className="panel hero-panel overflow-hidden lg:max-w-[29rem] lg:justify-self-end">
+          <div className="flex flex-col gap-6 p-6 sm:p-8">
+            <div className="flex justify-center">
+              <img
+                src={content.profilePhotoUrl}
+                alt={`${content.name} headshot`}
+                loading="eager"
+                width={320}
+                height={320}
+                className="h-56 w-56 rounded-[1.5rem] object-cover shadow-[0_8px_24px_-12px_rgba(0,0,0,0.4)] sm:h-72 sm:w-72"
+              />
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-start">
+            <div className="hero-card-meta grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
               <div>
                 <p className="text-sm font-medium uppercase tracking-[0.18em] text-[var(--color-brand)]">
                   Based in
@@ -119,13 +124,13 @@ export default function Hero({ content }) {
                 href={content.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--color-border)] bg-white/5 px-4 py-2 text-sm font-medium text-[var(--color-heading)] transition hover:border-[var(--color-border-strong)] hover:bg-white/10"
+                className="hero-resume-chip"
               >
                 Resume
               </a>
             </div>
 
-            <div className="grid gap-3">
+            <div className="grid gap-3 mt-1">
               {content.heroFacts.map((fact) => (
                 <div
                   key={fact}
