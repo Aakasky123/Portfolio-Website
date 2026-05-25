@@ -20,9 +20,9 @@ export const CONTENT = {
     status: "Production-style systems",
     command: "deploy --target backend-fullstack",
     metrics: [
-      { label: "API latency", value: "142ms", detail: "FastAPI + Redis" },
+      { label: "API latency", value: "-35%", detail: "Spring Boot + PostgreSQL" },
       { label: "Query speed", value: "-40%", detail: "PostgreSQL/MySQL" },
-      { label: "Ops effort", value: "-35%", detail: "CRM automation" },
+      { label: "Reporting", value: "+60%", detail: "Python + SQL ETL" },
       { label: "Room sync", value: "live", detail: "WebSockets" },
     ],
     services: [
@@ -164,9 +164,20 @@ export const CONTENT = {
   ],
   experience: [
     {
+      company: "Spectrum Capital NJ",
+      role: "Software Engineer, Distributed Systems",
+      time: "May 2025 - Present",
+      metrics: ["40% less reconciliation", "35% lower latency", "60% faster reporting"],
+      bullets: [
+        "Engineered centralized financial operations dashboards using Java, Spring Boot, React, and PostgreSQL, consolidating portfolio tracking and client workflows to reduce manual reconciliation effort by 40%.",
+        "Developed high-throughput REST APIs and optimized complex PostgreSQL query pipelines, cutting average response latency by 35% for data-intensive internal services.",
+        "Automated financial data ingestion and validation workflows with Python and SQL ETL pipelines, accelerating report generation by 60% while improving downstream data integrity.",
+      ],
+    },
+    {
       company: "New Jersey Institute of Technology",
       role: "Research Assistant",
-      time: "Mar 2025 - Present",
+      time: "Mar 2024 - May 2025",
       metrics: ["120K+ records", "40% faster queries", "60% less manual ETL"],
       bullets: [
         "Optimized PostgreSQL and MySQL queries across 120K+ records by redesigning joins, refining retrieval logic, and improving indexing strategies, reducing execution time by 40%.",
@@ -177,10 +188,10 @@ export const CONTENT = {
     {
       company: "Cognier Insights",
       role: "Software Engineer",
-      time: "May 2022 - Jul 2023",
-      metrics: ["35% fewer manual ops", "25% faster retrieval", "30% faster delivery"],
+      time: "Apr 2023 - Sep 2023",
+      metrics: ["35% less coordination", "25% faster retrieval", "30% faster delivery"],
       bullets: [
-        "Built internal CRM and reporting features using Java, Spring Boot, React, and PostgreSQL, reducing manual operations by 35%.",
+        "Developed customer-facing CRM modules and workflow automation features using Java, Spring Boot, React, and PostgreSQL, reducing manual coordination effort by 35%.",
         "Designed REST APIs, service-layer validation, and PostgreSQL-backed data access logic for data-intensive workflows, improving retrieval performance by 25%.",
         "Created reusable React UI components integrated with Spring Boot services, reducing feature delivery time by 30% and improving frontend maintainability.",
       ],
