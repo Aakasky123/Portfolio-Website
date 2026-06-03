@@ -188,7 +188,7 @@ export const CONTENT = {
     {
       company: "Cognier Insights",
       role: "Software Engineer",
-      time: "Apr 2023 - Sep 2023",
+      time: "Apr 2021 - Sep 2023",
       metrics: ["35% less coordination", "25% faster retrieval", "30% faster delivery"],
       bullets: [
         "Developed customer-facing CRM modules and workflow automation features using Java, Spring Boot, React, and PostgreSQL, reducing manual coordination effort by 35%.",
