@@ -1,86 +1,84 @@
-﻿import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import ThemeToggle from "../ThemeToggle";
+import { useState } from "react";
+import { Menu, X, FileDown } from "lucide-react";
 
-export default function Navbar({ items, activeSection, name, resumeUrl, onNavigate }) {
+export default function Navbar({ items, activeSection, resumeUrl, onNavigate }) {
   const [open, setOpen] = useState(false);
 
-  const handleSectionClick = (event, id) => {
-    onNavigate(event, id);
+  const handleClick = (event, id) => {
     setOpen(false);
+    onNavigate(event, id);
   };
 
-  useEffect(() => {
-    setOpen(false);
-  }, [activeSection]);
-
   return (
-    <>
-      <header className="nav-header sticky top-0 z-50">
-        <div className="nav-shell mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
-          <a
-            href="#home"
-            onClick={(event) => handleSectionClick(event, "home")}
-            className="nav-brand min-w-0"
-          >
-            <span className="block truncate uppercase">{name}</span>
-          </a>
-
-          <div className="hidden items-center gap-2 lg:flex">
-            <ThemeToggle />
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-action"
-            >
-              Resume
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle compact />
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-action px-3 py-2 text-sm"
-            >
-              Resume
-            </a>
-            <button
-              type="button"
-              onClick={() => setOpen((value) => !value)}
-              className="icon-button"
-              aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={open}
-              aria-controls="mobile-navigation"
-            >
-              {open ? <X size={18} /> : <Menu size={18} />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div
-        className={`mobile-menu-shell lg:hidden ${open ? "pointer-events-auto opacity-100" : "hidden pointer-events-none opacity-0"}`}
-      >
-        <nav
-          id="mobile-navigation"
-          className="panel mx-auto mt-3 flex max-w-6xl flex-col gap-2 p-3"
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/85 backdrop-blur-md">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <a
+          href="#top"
+          onClick={(e) => handleClick(e, "top")}
+          className="font-mono text-sm font-semibold tracking-tight text-fg"
         >
+          <span className="text-amber">~/</span>aakash
+        </a>
+
+        <div className="hidden items-center gap-1 md:flex">
           {items.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              onClick={(event) => handleSectionClick(event, item.id)}
-              className={`mobile-nav-link ${activeSection === item.id ? "mobile-nav-link-active" : ""}`}
+              onClick={(e) => handleClick(e, item.id)}
+              className={`rounded px-3 py-1.5 font-mono text-xs tracking-widest uppercase transition-colors ${
+                activeSection === item.id
+                  ? "text-amber"
+                  : "text-mute hover:text-fg"
+              }`}
             >
               {item.label}
             </a>
           ))}
-        </nav>
-      </div>
-    </>
+          <a
+            href={resumeUrl}
+            download
+            className="ml-3 inline-flex items-center gap-2 border border-line-strong px-3.5 py-1.5 font-mono text-xs tracking-widest text-fg uppercase transition-colors hover:border-amber hover:text-amber"
+          >
+            <FileDown size={13} />
+            Resume
+          </a>
+        </div>
+
+        <button
+          type="button"
+          className="text-mute md:hidden"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </nav>
+
+      {open && (
+        <div className="border-t border-line bg-ink px-4 pb-4 md:hidden">
+          {items.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleClick(e, item.id)}
+              className={`block py-3 font-mono text-sm tracking-widest uppercase ${
+                activeSection === item.id ? "text-amber" : "text-mute"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href={resumeUrl}
+            download
+            className="mt-2 inline-flex items-center gap-2 border border-line-strong px-4 py-2 font-mono text-xs tracking-widest text-fg uppercase"
+          >
+            <FileDown size={13} />
+            Resume
+          </a>
+        </div>
+      )}
+    </header>
   );
 }

@@ -1,43 +1,52 @@
-import { motion, useReducedMotion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
-const MotionSection = motion.section;
-
-export default function AboutSection({ about, subtitle, capabilities = [] }) {
-  const reduceMotion = useReducedMotion();
-
+export default function AboutSection({ about, facts, education }) {
   return (
-    <MotionSection
-      id="about"
-      className="section-anchor section-shell"
-      initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="panel p-5 sm:p-7 lg:p-10">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)] lg:gap-12">
-          <SectionHeader title="About" subtitle={subtitle} />
-
-          <div className="grid gap-7">
-            <div className="grid gap-5 text-sm leading-8 text-[var(--color-text-muted)] sm:text-base">
-              {about.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-
-            <div className="grid gap-3 md:grid-cols-3">
-              {capabilities.map((capability) => (
-                <article className="capability-card" key={capability.title}>
-                  <p className="capability-metric">{capability.metric}</p>
-                  <h3 className="capability-title">{capability.title}</h3>
-                  <p className="capability-desc">{capability.desc}</p>
-                </article>
-              ))}
-            </div>
+    <section id="about" className="scroll-mt-24 py-16 sm:py-24">
+      <SectionHeader index="04" title="About" subtitle="Backend rigor, agent-level ambition." />
+      <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+        <Reveal>
+          <div className="space-y-5">
+            {about.map((p) => (
+              <p key={p.slice(0, 24)} className="leading-relaxed text-mute">
+                {p}
+              </p>
+            ))}
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <dl className="border border-line">
+            {facts.map((fact, i) => (
+              <div
+                key={fact.label}
+                className={`flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-baseline sm:gap-4 ${
+                  i > 0 ? "border-t border-line" : ""
+                }`}
+              >
+                <dt className="w-24 shrink-0 font-mono text-[11px] tracking-widest text-dim uppercase">
+                  {fact.label}
+                </dt>
+                <dd className="text-sm text-fg">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-6 space-y-4">
+            {education.map((edu) => (
+              <div key={edu.school} className="border border-line bg-ink-2 px-5 py-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-display text-base font-semibold text-fg">{edu.school}</h3>
+                  <span className="font-mono text-[11px] tracking-wider text-dim">{edu.time}</span>
+                </div>
+                <p className="mt-1 text-sm text-mute">{edu.degree}</p>
+                <p className="mt-1 font-mono text-[11px] tracking-wide text-dim">{edu.detail}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
-    </MotionSection>
+    </section>
   );
 }

@@ -1,16 +1,17 @@
-﻿export default function SectionHeader({ title, subtitle, align = "left" }) {
-  const center = align === "center";
+import Reveal from "./Reveal";
 
+export default function SectionHeader({ index, title, subtitle }) {
   return (
-    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[var(--color-heading)] sm:text-4xl">
-        {title}
-      </h2>
-      {subtitle ? (
-        <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg">
+    <Reveal className="mb-10 sm:mb-14">
+      <p className="font-mono text-xs tracking-[0.25em] text-amber uppercase">
+        {index} <span className="text-dim">/</span> {title}
+      </p>
+      {subtitle && (
+        <h2 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
           {subtitle}
-        </p>
-      ) : null}
-    </div>
+        </h2>
+      )}
+      <div className="mt-6 h-px w-full bg-line" />
+    </Reveal>
   );
 }

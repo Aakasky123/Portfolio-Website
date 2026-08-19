@@ -3,33 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aakash • Portfolio</title>
+    <title>Aakash Siricilla — Software Engineer</title>
+    <meta
+      name="description"
+      content="Software engineer building AI agent systems and distributed backends. LLM agents, RAG platforms, real-time pipelines — Python, FastAPI, Java, Spring Boot."
+    />
+    <meta property="og:title" content="Aakash Siricilla — Software Engineer" />
+    <meta
+      property="og:description"
+      content="AI agents that do real work, and the systems that keep them reliable."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aakashsiricilla-portfolio.vercel.app/" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Set dark or light before paint -->
-    <script>
-      (() => {
-        const stored = localStorage.getItem("theme");
-        const mql = window.matchMedia("(prefers-color-scheme: dark)");
-        const system = mql.matches ? "dark" : "light";
-        const theme = stored || system;
-
-        const html = document.documentElement;
-        html.classList.remove("dark");                 // remove any stale class
-        html.setAttribute("data-theme", theme);
-      })();
-    </script>
-    
   </head>
 
-  <body class="font-sans bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

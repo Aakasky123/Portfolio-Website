@@ -1,215 +1,211 @@
 export const CONTENT = {
   name: "Aakash Siricilla",
-  profilePhotoUrl: "/projects/aakash.webp",
   role: "Software Engineer",
-  summary:
-    "I build backend-heavy and full-stack applications with Java, Spring Boot, React, PostgreSQL, FastAPI, Redis, WebSockets, and Docker.",
+  focus: "AI Agents & Distributed Systems",
   location: "New Jersey, USA",
   resumeUrl: "/Aakash_Resume.pdf",
+
+  // Hero
+  heroEyebrow: "Aakash Siricilla — Software Engineer",
+  heroHeadline: ["I build AI agents that do real work,", "and the systems that keep them reliable."],
+  heroSub:
+    "LLM agents, RAG platforms, and real-time distributed backends — Python, FastAPI, Java, Spring Boot, PostgreSQL, Redis. Currently engineering financial systems at Spectrum Capital NJ.",
+  heroStats: [
+    { value: "~1,200", label: "automated tests behind Astra, my autonomous computer-use agent" },
+    { value: "sub-500ms", label: "request handling in a real-time anomaly-detection pipeline" },
+    { value: "-70%", label: "document lookup time via hybrid RAG retrieval" },
+  ],
+
   socials: [
     { label: "GitHub", href: "https://github.com/Aakasky123" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aakash-siricilla" },
     { label: "Email", href: "mailto:aakash.siricilla02@gmail.com" },
   ],
-  heroFacts: [
-    "Backend-heavy full-stack engineer",
-    "Java + Spring Boot + React",
-    "Real-time APIs and data workflows",
+
+  // Animated agent trace shown in the hero panel
+  agentTrace: [
+    { kind: "obs", text: "screenshot captured — job application form, 14 fields" },
+    { kind: "plan", text: "decide: fill `years_experience` → type \"3\"" },
+    { kind: "act", text: "execute: DOM-verified input via Chrome MV3 runtime" },
+    { kind: "verify", text: "read-back OK — field matches intent" },
+    { kind: "gate", text: "submit detected → holding for human approval" },
+    { kind: "mem", text: "audit receipt written · memory updated" },
   ],
-  console: {
-    status: "Production-style systems",
-    command: "deploy --target backend-fullstack",
-    metrics: [
-      { label: "API latency", value: "-35%", detail: "Spring Boot + PostgreSQL" },
-      { label: "Query speed", value: "-40%", detail: "PostgreSQL/MySQL" },
-      { label: "Reporting", value: "+60%", detail: "Python + SQL ETL" },
-      { label: "Room sync", value: "live", detail: "WebSockets" },
-    ],
-    services: [
-      { name: "Spring Boot API", status: "online" },
-      { name: "PostgreSQL", status: "indexed" },
-      { name: "Redis cache", status: "warm" },
-      { name: "Docker services", status: "ready" },
-    ],
-  },
-  aboutSubtitle: "Backend, APIs, real-time systems, and production-style architecture",
+
+  // About
   about: [
-    "I am a software engineer focused on backend-heavy full-stack systems: REST APIs, WebSocket workflows, data pipelines, service-layer validation, and database-backed product features.",
-    "My recent work centers on Java, Spring Boot, React, PostgreSQL, FastAPI, Redis, Docker, and production-style project structure. I care about clear APIs, reliable data flows, measurable performance wins, and interfaces that make complex systems easier to operate.",
+    "I'm a software engineer working at the intersection of LLM systems and distributed backends. I've spent the last few years shipping production services — financial dashboards, CRM platforms, data pipelines — and now I build autonomous agents on top of that foundation: vision-guided computer use, RAG retrieval, and safety-first orchestration.",
+    "What I care about: agents that verify their own actions, APIs with measurable latency wins, data flows you can audit, and enough tests that deploys are boring.",
   ],
-  aboutCapabilities: [
-    {
-      title: "Backend APIs",
-      metric: "REST + JWT",
-      desc: "Spring Boot and FastAPI services with validation, data access, and reliable request flows.",
-    },
-    {
-      title: "Real-time Systems",
-      metric: "WebSockets",
-      desc: "Live session state, monitoring streams, and low-latency client-server updates.",
-    },
-    {
-      title: "Data Workflows",
-      metric: "120K+ records",
-      desc: "Query optimization, ETL automation, dashboards, and reporting pipelines.",
-    },
+  aboutFacts: [
+    { label: "Now", value: "Software Engineer @ Spectrum Capital NJ" },
+    { label: "Education", value: "M.S. Computer Science, NJIT · GPA 3.93" },
+    { label: "Based in", value: "New Jersey, USA" },
+    { label: "Open to", value: "SWE roles — AI systems, backend, full-stack" },
   ],
-  projectsSubtitle: "Backend-heavy full-stack projects with clear engineering depth",
-  experienceSubtitle: "SWE, backend, and data engineering impact",
-  skillsSubtitle: "Recruiter-scannable technical stack",
-  contactSubtitle: "Open to software engineering roles focused on backend and full-stack systems.",
-  skills: [
-    "Java",
-    "Python",
-    "TypeScript",
-    "SQL",
-    "C/C++",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "HTML",
-    "CSS",
-    "Spring Boot",
-    "FastAPI",
-    "REST APIs",
-    "WebSockets",
-    "JWT Authentication",
-    "Async Processing",
-    "PostgreSQL",
-    "MySQL",
-    "Redis",
-    "Qdrant",
-    "FAISS",
-    "Docker",
-    "Kubernetes",
-    "CI/CD",
-    "AWS",
-    "Git",
-    "GitHub Actions",
-    "Celery",
-    "MLflow",
-    "Prometheus",
-    "Grafana",
-    "Pandas",
-    "NumPy",
-  ],
+
+  // Work
+  featured: {
+    title: "Astra",
+    kicker: "Flagship · Autonomous Computer-Use AI Agent",
+    desc: "An LLM-driven agent that completes real-world digital tasks end-to-end — job applications, bookings, form filling — through a vision–action loop: screenshot → single-action model decision → execution → read-back verification.",
+    tags: ["Python", "FastAPI", "Electron", "Next.js", "Chrome MV3", "SQLite"],
+    highlights: [
+      {
+        title: "Vision–action loop",
+        desc: "Every step is observed, decided, executed, and verified against a read-back — with step-level audit receipts and LLM-curated persistent memory.",
+      },
+      {
+        title: "Dual execution runtimes",
+        desc: "A Chrome MV3 extension for DOM-verified browser automation and a Windows desktop controller (UIA/SendInput), with per-task routing and an LLM-classified chat ingress.",
+      },
+      {
+        title: "Safety-first architecture",
+        desc: "Approval gates before any submit/pay action, a credential vault isolated from the model, sensitive-field masking, and sanctioned-URL navigation.",
+      },
+      {
+        title: "Engineered like a product",
+        desc: "FastAPI + SQLite backend with ~1,200 automated tests covering the agent loop, runtimes, and safety gates.",
+      },
+    ],
+    note: "Private build — happy to walk through the architecture.",
+  },
   projects: [
     {
-      title: "SyncStream",
-      subtitle: "Real-Time Collaborative Streaming Platform",
-      desc: "Full-stack collaboration platform with invite-based sessions, persistent room state, and low-latency synchronization.",
-      tags: ["Java", "Spring Boot", "Next.js", "WebSockets", "PostgreSQL", "Docker"],
+      title: "DocuMindAI",
+      subtitle: "Enterprise Document Intelligence (RAG)",
+      desc: "Full-stack RAG platform with asynchronous ingestion, hybrid semantic + keyword retrieval over Qdrant embeddings, and contextual chat — cutting document lookup time by ~70%.",
+      tags: ["FastAPI", "React", "Qdrant", "Redis", "Celery", "MLflow"],
+      metric: "-70% lookup time",
       highlights: [
-        "Built real-time client-server communication patterns for live session updates.",
-        "Implemented room persistence, invite flows, and WebSocket-driven synchronization.",
-        "Dockerized frontend and backend services for local and cloud-ready deployment.",
+        "Hybrid retrieval over Qdrant embeddings with contextual chat",
+        "Celery + Redis background execution for multi-document workloads",
+        "MLflow-tracked experiments across retrieval configurations",
       ],
-      visual: {
-        type: "sync",
-        metric: "Live rooms",
-        nodes: ["Host", "WebSocket", "Room State", "Guest"],
-      },
-      links: [{ label: "GitHub", href: "https://github.com/Aakasky123/SyncStream" }],
+      link: "https://github.com/Aakasky123/DocuMindAI",
     },
     {
       title: "SentinelAI",
-      subtitle: "Real-Time Network Monitoring Platform",
-      desc: "Backend-heavy monitoring platform for streaming network events, Redis-backed state, and live analytics dashboards.",
+      subtitle: "Real-Time Network Monitoring",
+      desc: "Real-time event-processing pipeline with streaming analytics, Redis-backed state, and sub-500ms request handling for high-volume anomaly-detection workflows.",
       tags: ["Python", "FastAPI", "Redis", "TimescaleDB", "Next.js", "Docker"],
+      metric: "sub-500ms handling",
       highlights: [
-        "Engineered a real-time event pipeline with streaming analytics and Redis hot-state management.",
-        "Kept the ingestion path short with background persistence and WebSocket broadcasting.",
-        "Built dashboard views with replay controls and live operational metrics.",
+        "Streaming analytics with Redis hot-state management",
+        "WebSocket-powered live dashboard with replay controls",
+        "TimescaleDB persistence off the hot ingestion path",
       ],
-      visual: {
-        type: "monitor",
-        metric: "Sub-500ms",
-        nodes: ["Events", "Redis", "FastAPI", "Dashboard"],
-      },
-      links: [{ label: "GitHub", href: "https://github.com/Aakasky123/SentinelAI" }],
+      link: "https://github.com/Aakasky123/SentinelAI",
     },
     {
-      title: "DocuMindAI",
-      subtitle: "Enterprise Document Intelligence Platform",
-      desc: "Scalable full-stack document platform with async ingestion, semantic search, contextual chat, and modular services.",
-      tags: ["FastAPI", "React", "Qdrant", "Redis", "Docker", "MLflow"],
+      title: "SyncStream",
+      subtitle: "Real-Time Collaborative Streaming",
+      desc: "Dockerized full-stack collaboration platform with invite-based sessions, persistent room state, and low-latency user synchronization over Spring Boot WebSockets.",
+      tags: ["Java", "Spring Boot", "Next.js", "WebSockets", "PostgreSQL"],
+      metric: "low-latency sync",
       highlights: [
-        "Reduced document lookup time by nearly 70% with semantic search and contextual retrieval.",
-        "Implemented hybrid retrieval, Celery workers, and Redis-backed background task execution.",
-        "Structured services for multi-document workloads and extensible backend orchestration.",
+        "Invite-based sessions with persistent room state",
+        "Spring Boot WebSocket synchronization across clients",
+        "Dockerized frontend + backend for cloud-ready deploys",
       ],
-      visual: {
-        type: "docs",
-        metric: "-70% lookup",
-        nodes: ["Ingest", "Celery", "Qdrant", "Chat"],
-      },
-      links: [{ label: "GitHub", href: "https://github.com/Aakasky123/DocuMindAI" }],
-    },
-    {
-      title: "ClinVisionAI",
-      subtitle: "Asynchronous Medical Imaging Workflow",
-      desc: "Production-style imaging MVP with asynchronous scan processing, inference history, and observability.",
-      tags: ["Python", "FastAPI", "React", "PostgreSQL", "Prometheus", "Grafana"],
-      highlights: [
-        "Moved scan processing outside the API request path for more reliable upload workflows.",
-        "Added inference history, explainability artifacts, and Prometheus/Grafana monitoring.",
-      ],
-      visual: {
-        type: "clinical",
-        metric: "Async scans",
-        nodes: ["Upload", "Worker", "Postgres", "Grafana"],
-      },
-      links: [{ label: "GitHub", href: "https://github.com/Aakasky123/ClinVisionAI" }],
+      link: "https://github.com/Aakasky123/SyncStream",
     },
   ],
+
+  // Experience
   experience: [
     {
       company: "Spectrum Capital NJ",
       role: "Software Engineer, Distributed Systems",
-      time: "May 2025 - Present",
-      metrics: ["40% less reconciliation", "35% lower latency", "60% faster reporting"],
+      time: "May 2025 — Present",
+      place: "New Jersey, USA",
       bullets: [
-        "Engineered centralized financial operations dashboards using Java, Spring Boot, React, and PostgreSQL, consolidating portfolio tracking and client workflows to reduce manual reconciliation effort by 40%.",
-        "Developed high-throughput REST APIs and optimized complex PostgreSQL query pipelines, cutting average response latency by 35% for data-intensive internal services.",
-        "Automated financial data ingestion and validation workflows with Python and SQL ETL pipelines, accelerating report generation by 60% while improving downstream data integrity.",
+        "Engineered centralized financial-operations dashboards (Java, Spring Boot, React, PostgreSQL) consolidating portfolio tracking and client workflows — cut manual reconciliation effort by 40%.",
+        "Optimized high-throughput REST APIs and complex PostgreSQL query pipelines, reducing average response latency by 35% for data-intensive internal services.",
+        "Automated end-to-end financial data ingestion and validation with Python/SQL ETL pipelines, accelerating report generation by 60%.",
+        "Architected role-based workflow orchestration and audit-tracking modules with granular access controls and transactional logging, slashing issue-investigation time by 45%.",
+        "Containerized and deployed Spring Boot services on AWS with Docker, standardizing deployment environments.",
       ],
     },
     {
       company: "New Jersey Institute of Technology",
       role: "Research Assistant",
-      time: "Mar 2024 - May 2025",
-      metrics: ["120K+ records", "40% faster queries", "60% less manual ETL"],
+      time: "Mar 2024 — May 2025",
+      place: "Newark, NJ",
       bullets: [
-        "Optimized PostgreSQL and MySQL queries across 120K+ records by redesigning joins, refining retrieval logic, and improving indexing strategies, reducing execution time by 40%.",
-        "Automated Python ETL and preprocessing pipelines for recurring datasets, reducing manual processing effort by 60% and improving downstream reporting reliability.",
-        "Built internal data pipelines and reporting dashboards to track operational and model performance metrics, shortening reporting turnaround time by 30%.",
+        "Optimized PostgreSQL and MySQL queries across 120K+ records by redesigning joins and indexing strategies — cut query execution time by 40%.",
+        "Automated Python ETL and preprocessing pipelines, reducing manual processing effort by 60% and improving reliability of downstream ML workflows.",
+        "Built data pipelines and dashboards tracking operational and model-performance metrics, shortening reporting turnaround by 30%.",
       ],
     },
     {
       company: "Cognier Insights",
       role: "Software Engineer",
-      time: "Apr 2021 - Sep 2023",
-      metrics: ["35% less coordination", "25% faster retrieval", "30% faster delivery"],
+      time: "Apr 2021 — Sep 2023",
+      place: "Hyderabad, India",
       bullets: [
-        "Developed customer-facing CRM modules and workflow automation features using Java, Spring Boot, React, and PostgreSQL, reducing manual coordination effort by 35%.",
-        "Designed REST APIs, service-layer validation, and PostgreSQL-backed data access logic for data-intensive workflows, improving retrieval performance by 25%.",
-        "Created reusable React UI components integrated with Spring Boot services, reducing feature delivery time by 30% and improving frontend maintainability.",
+        "Developed customer-facing CRM modules and workflow automation (Java, Spring Boot, React, PostgreSQL), reducing manual coordination effort by 35%.",
+        "Designed REST APIs, service-layer validation, and PostgreSQL-backed data access for data-intensive workflows — improved retrieval performance by 25%.",
+        "Created reusable React components integrated with Spring Boot services, cutting feature delivery time by 30%.",
       ],
     },
   ],
-  education: [
+
+  // Skills — mirrors resume categories
+  skills: [
     {
-      school: "New Jersey Institute of Technology (NJIT)",
-      degree: "M.S. in Computer Science",
-      time: "2023 - 2025",
+      category: "AI & LLM Systems",
+      items: [
+        "LLM Agents (planning · tool use · computer use)",
+        "RAG",
+        "Semantic Search",
+        "Embeddings",
+        "Prompt Engineering",
+        "OpenAI / OpenRouter APIs",
+        "MLflow",
+        "Vision-Guided Automation",
+      ],
     },
     {
-      school: "Kommuri Pratap Reddy Institute of Technology (KPRIT), Hyderabad",
-      degree: "B.Tech in Computer Science and Engineering",
-      time: "2019 - 2023",
+      category: "Languages",
+      items: ["Python", "Java", "TypeScript", "SQL", "C/C++"],
+    },
+    {
+      category: "Backend & APIs",
+      items: ["FastAPI", "Spring Boot", "REST APIs", "WebSockets", "Celery", "Async Processing", "JWT Authentication"],
+    },
+    {
+      category: "Databases & Vector Stores",
+      items: ["PostgreSQL", "MySQL", "Redis", "Qdrant", "FAISS", "TimescaleDB", "SQLite"],
+    },
+    {
+      category: "Frontend & Apps",
+      items: ["React", "Next.js", "Electron", "Chrome Extensions (MV3)", "Tailwind CSS"],
+    },
+    {
+      category: "Cloud & DevOps",
+      items: ["Docker", "Kubernetes", "AWS", "CI/CD", "GitHub Actions", "Prometheus", "Grafana"],
     },
   ],
+
+  education: [
+    {
+      school: "New Jersey Institute of Technology",
+      degree: "M.S. in Computer Science",
+      time: "Sep 2023 — May 2025",
+      detail: "GPA 3.93 / 4.0 · Machine Learning & MLOps, Deep Learning, Distributed Systems",
+    },
+    {
+      school: "Kommuri Pratap Reddy Institute of Technology",
+      degree: "B.Tech. in Computer Science & Engineering",
+      time: "Aug 2019 — May 2023",
+      detail: "GPA 8.55 / 10 · Cloud Computing, DSA, Operating Systems, Databases",
+    },
+  ],
+
   contact: {
+    heading: "Let's build something that ships.",
+    sub: "Open to software engineering roles across AI systems, backend, and full-stack. The fastest way to reach me is email — I usually reply within a day.",
     email: "aakash.siricilla02@gmail.com",
     phone: "+1 (551) 375-6945",
     phoneHref: "tel:+15513756945",
@@ -218,11 +214,9 @@ export const CONTENT = {
 };
 
 export const NAV_ITEMS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
+  { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
+  { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ];

@@ -1,80 +1,85 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
-import EngineeringConsole from "./EngineeringConsole";
+﻿import { motion as Motion } from "framer-motion";
+import { ArrowDown, FileDown } from "lucide-react";
+import AgentTrace from "./AgentTrace";
 
-const SOCIAL_ICONS = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Email: Mail,
-};
-
-const MotionDiv = motion.div;
-
-export default function Hero({ content }) {
-  const reduceMotion = useReducedMotion();
-
-  const heroTransition = reduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-      };
-
+export default function Hero({ content, onNavigate }) {
   return (
-    <section id="home" className="section-anchor hero-section section-shell pt-10 sm:pt-14">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(390px,0.95fr)] lg:items-start lg:gap-10 xl:gap-12">
-        <MotionDiv {...heroTransition} className="relative lg:pr-3">
-          <div className="hero-name-badge flex w-fit items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-surface-soft)] px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] text-[var(--color-brand)]">
-            <span className="h-2 w-2 rounded-full bg-[var(--color-brand)] shadow-[0_0_18px_var(--color-brand)]" />
-            Backend-heavy full-stack
-          </div>
+    <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
+      <div className="grid-bg pointer-events-none absolute inset-0 -z-10" />
 
-          <h1 className="hero-title max-w-[12ch] text-4xl font-semibold tracking-[-0.06em] text-[var(--color-heading)] sm:max-w-none sm:text-5xl lg:text-[5.4rem] xl:text-7xl">
-            {content.role}
+      <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+        <Motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="font-mono text-xs tracking-[0.25em] text-amber uppercase">
+            {content.heroEyebrow}
+          </p>
+          <h1 className="mt-5 font-display text-4xl leading-[1.08] font-semibold tracking-tight text-fg sm:text-5xl lg:text-[3.4rem]">
+            {content.heroHeadline[0]}
+            <br />
+            <span className="text-mute">{content.heroHeadline[1]}</span>
           </h1>
-
-          <p className="hero-summary mt-7 max-w-[34rem] text-base text-[var(--color-text-muted)] sm:mt-8 sm:text-lg">
-            {content.summary}
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-mute sm:text-lg">
+            {content.heroSub}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#work"
+              onClick={(e) => onNavigate(e, "work")}
+              className="inline-flex items-center gap-2 bg-amber px-5 py-2.5 font-mono text-xs font-semibold tracking-widest text-ink uppercase transition-colors hover:bg-amber-deep hover:text-fg"
+            >
+              View work
+              <ArrowDown size={14} />
+            </a>
             <a
               href={content.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary justify-center sm:justify-start"
+              download
+              className="inline-flex items-center gap-2 border border-line-strong px-5 py-2.5 font-mono text-xs tracking-widest text-fg uppercase transition-colors hover:border-amber hover:text-amber"
             >
-              <FileText size={18} />
-              Download Resume
+              <FileDown size={14} />
+              Resume
             </a>
-            <a href="#projects" className="cta-secondary justify-center sm:justify-start">
-              <span>View Projects</span>
-              <ArrowRight size={17} />
-            </a>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            {content.socials.map((social) => {
-              const Icon = SOCIAL_ICONS[social.label];
-              return (
+            <div className="ml-1 flex items-center gap-4">
+              {content.socials.map((s) => (
                 <a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                  className="pill-link"
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className="font-mono text-xs tracking-widest text-mute uppercase underline-offset-4 transition-colors hover:text-amber hover:underline"
                 >
-                  {Icon ? <Icon size={16} /> : null}
-                  {social.label}
+                  {s.label}
                 </a>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </MotionDiv>
+        </Motion.div>
 
-        <EngineeringConsole content={content} />
+        <Motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <AgentTrace lines={content.agentTrace} />
+        </Motion.div>
       </div>
+
+      <Motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.35 }}
+        className="mt-16 grid gap-px border border-line bg-line sm:grid-cols-3"
+      >
+        {content.heroStats.map((stat) => (
+          <div key={stat.value} className="bg-ink-2 px-6 py-5">
+            <p className="font-display text-2xl font-semibold text-amber">{stat.value}</p>
+            <p className="mt-1.5 text-sm leading-snug text-mute">{stat.label}</p>
+          </div>
+        ))}
+      </Motion.div>
     </section>
   );
 }

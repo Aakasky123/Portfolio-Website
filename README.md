@@ -1,39 +1,28 @@
-# Aakash Siricilla - Software Engineering Portfolio
+# Aakash Siricilla — Portfolio
 
-Live portfolio: https://aakashsiricilla-portfolio.vercel.app/
+Personal portfolio: **AI agent systems + distributed backends**.
 
-A clean, responsive portfolio for Aakash Siricilla, focused on backend-heavy full-stack software engineering. The site highlights Java, Spring Boot, React, PostgreSQL, FastAPI, Redis, Docker, real-time systems, API work, and production-style engineering projects.
+Live: https://aakashsiricilla-portfolio.vercel.app/
 
-## Tech Stack
+## Stack
 
-- React + Vite
-- Tailwind CSS
-- Framer Motion
-- Lucide React
+- React 19 + Vite 7
+- Tailwind CSS v4 (CSS-first config via `@theme` in `src/index.css`)
+- Framer Motion for scroll reveals
+- Lucide icons
+- Deployed on Vercel
 
-## Content
+## Structure
 
-Portfolio content is centralized in `src/data/content.js` for fast updates to:
+- `src/data/content.js` — all site content (edit this to update copy, projects, experience)
+- `src/components/` — presentational components
+- `public/Aakash_Resume.pdf` — downloadable resume
 
-- Hero positioning
-- About copy
-- Featured projects
-- Experience
-- Skills
-- Resume and contact links
-
-## Local Development
-
-Prerequisites: Node.js 18+ and npm.
+## Develop
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Production Build
-
-```bash
-npm run build
-npm run preview
-```
+`npm run build` produces the production bundle in `dist/`.
