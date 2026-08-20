@@ -1,18 +1,36 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ASCII_PORTRAIT } from "../data/asciiPortrait";
 
 const NOISE = ".':;i1tfLCG08@";
 const SWEEP_MS = 1700; // top-to-bottom resolve sweep
 const JITTER_MS = 900; // per-char randomness on top of the sweep
 const TICK_MS = 40;
+const SPARKLE_MS = 90;
+const SPARKLE_RATE = 0.03;
 
 const randomGlyph = () => NOISE[(Math.random() * NOISE.length) | 0];
 
 function makeNoiseFrame(art) {
   return {
-    resolved: art.replace(/[^ \n]/g, " "),
-    flicker: art.replace(/[^ \n]/g, randomGlyph),
+    base: art.replace(/[^ \n]/g, " "),
+    over: art.replace(/[^ \n]/g, randomGlyph),
   };
+}
+
+// Punch random holes in the art and show amber glyphs in them.
+function makeSparkleFrame(art) {
+  let base = "";
+  let over = "";
+  for (const ch of art) {
+    if (ch !== " " && ch !== "\n" && Math.random() < SPARKLE_RATE) {
+      base += " ";
+      over += randomGlyph();
+    } else {
+      base += ch;
+      over += ch === "\n" ? "\n" : " ";
+    }
+  }
+  return { base, over };
 }
 
 function buildSchedule(art) {
@@ -33,14 +51,24 @@ export default function AsciiPortrait() {
   // line's leading spaces and shift the top of the portrait left.
   const art = useMemo(() => ASCII_PORTRAIT.replace(/^\n+|\n+\s*$/g, ""), []);
   const lines = useMemo(() => art.split("\n"), [art]);
-  const scheduleRef = useRef(null);
+  const rootRef = useRef(null);
   const [run, setRun] = useState(0);
   // null = fully decoded, show the final art
   const [frame, setFrame] = useState(() =>
     prefersReducedMotion() ? null : makeNoiseFrame(art)
   );
   const [progress, setProgress] = useState(0);
+  const [hover, setHover] = useState(false);
+  const [sparkle, setSparkle] = useState(null);
 
+  const replay = useCallback(() => {
+    if (prefersReducedMotion()) return;
+    setProgress(0);
+    setFrame(makeNoiseFrame(art));
+    setRun((n) => n + 1);
+  }, [art]);
+
+  // Decode animation
   useEffect(() => {
     if (prefersReducedMotion()) {
       setFrame(null);
@@ -48,42 +76,41 @@ export default function AsciiPortrait() {
       return undefined;
     }
 
-    scheduleRef.current = buildSchedule(art);
+    const schedule = buildSchedule(art);
     let start = null;
 
     const id = window.setInterval(() => {
       const now = performance.now();
       if (start === null) start = now;
       const t = now - start;
-      const schedule = scheduleRef.current;
       let total = 0;
       let done = 0;
-      const resolved = [];
-      const flicker = [];
+      const base = [];
+      const over = [];
 
       for (let r = 0; r < lines.length; r++) {
         const line = lines[r];
-        let resLine = "";
-        let flickLine = "";
+        let baseLine = "";
+        let overLine = "";
         for (let c = 0; c < line.length; c++) {
           const at = schedule[r][c];
           if (at === null) {
-            resLine += " ";
-            flickLine += " ";
+            baseLine += " ";
+            overLine += " ";
             continue;
           }
           total += 1;
           if (t >= at) {
             done += 1;
-            resLine += line[c];
-            flickLine += " ";
+            baseLine += line[c];
+            overLine += " ";
           } else {
-            resLine += " ";
-            flickLine += randomGlyph();
+            baseLine += " ";
+            overLine += randomGlyph();
           }
         }
-        resolved.push(resLine);
-        flicker.push(flickLine);
+        base.push(baseLine);
+        over.push(overLine);
       }
 
       setProgress(Math.round((done / total) * 100));
@@ -91,29 +118,60 @@ export default function AsciiPortrait() {
         setFrame(null);
         window.clearInterval(id);
       } else {
-        setFrame({ resolved: resolved.join("\n"), flicker: flicker.join("\n") });
+        setFrame({ base: base.join("\n"), over: over.join("\n") });
       }
     }, TICK_MS);
 
     return () => window.clearInterval(id);
   }, [art, lines, run]);
 
-  const replay = () => {
-    if (prefersReducedMotion()) return;
-    setProgress(0);
-    setFrame(makeNoiseFrame(art));
-    setRun((n) => n + 1);
-  };
+  // Replay when the panel scrolls fully out of view and back in
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return undefined;
+    let wasOut = false;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const out = rect.bottom < 0 || rect.top > window.innerHeight;
+      if (out) {
+        wasOut = true;
+      } else if (wasOut && rect.top > -rect.height * 0.25) {
+        wasOut = false;
+        replay();
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [replay]);
 
   const decoding = frame !== null;
-  const preClass = "overflow-hidden px-3 py-4 font-mono select-none";
+
+  // Hover glitch shimmer (only once decoded)
+  useEffect(() => {
+    if (!hover || decoding || prefersReducedMotion()) {
+      setSparkle(null);
+      return undefined;
+    }
+    setSparkle(makeSparkleFrame(art));
+    const id = window.setInterval(() => setSparkle(makeSparkleFrame(art)), SPARKLE_MS);
+    return () => {
+      window.clearInterval(id);
+      setSparkle(null);
+    };
+  }, [hover, decoding, art]);
+
+  const shown = decoding ? frame : sparkle ?? { base: art, over: null };
+  const preClass = "overflow-hidden font-mono select-none";
   const preStyle = { fontSize: "clamp(3.6px, 1.26vw, 5.9px)", lineHeight: 1.15 };
 
   return (
     <div
+      ref={rootRef}
       className="ticks cursor-pointer border border-line bg-panel"
       title="Replay decode"
       onClick={replay}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
         <span className="font-mono text-[11px] tracking-widest text-mute uppercase">
@@ -128,20 +186,18 @@ export default function AsciiPortrait() {
         </span>
       </div>
 
-      <div className="relative">
-        <pre aria-hidden={decoding || undefined} className={`${preClass} text-fg/80`} style={preStyle}>
-          {decoding ? frame.resolved : art}
-        </pre>
-        {decoding && (
-          <pre
-            aria-hidden
-            className={`${preClass} absolute inset-0 text-amber/35`}
-            style={preStyle}
-          >
-            {frame.flicker}
+      <div className="px-3 py-4">
+        <div className="relative mx-auto w-fit">
+          <pre aria-hidden={decoding || undefined} className={`${preClass} text-fg/80`} style={preStyle}>
+            {shown.base}
           </pre>
-        )}
-        <span className="sr-only">ASCII art portrait of Aakash Siricilla</span>
+          {shown.over !== null && (
+            <pre aria-hidden className={`${preClass} absolute inset-0 text-amber/35`} style={preStyle}>
+              {shown.over}
+            </pre>
+          )}
+          <span className="sr-only">ASCII art portrait of Aakash Siricilla</span>
+        </div>
       </div>
 
       <div className="border-t border-line px-4 py-2.5 font-mono text-[11px] tracking-wider text-dim uppercase">
