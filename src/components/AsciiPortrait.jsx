@@ -29,7 +29,9 @@ const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 export default function AsciiPortrait() {
-  const art = useMemo(() => ASCII_PORTRAIT.trim(), []);
+  // Strip only the wrapping newlines — trim() would also eat the first
+  // line's leading spaces and shift the top of the portrait left.
+  const art = useMemo(() => ASCII_PORTRAIT.replace(/^\n+|\n+\s*$/g, ""), []);
   const lines = useMemo(() => art.split("\n"), [art]);
   const scheduleRef = useRef(null);
   const [run, setRun] = useState(0);
