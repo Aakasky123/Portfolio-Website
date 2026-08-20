@@ -63,7 +63,11 @@ export default function Portfolio() {
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
         <Hero content={CONTENT} onNavigate={handleNavigate} />
-        <WorkSection featured={CONTENT.featured} projects={CONTENT.projects} />
+        <WorkSection
+          featured={CONTENT.featured}
+          projects={CONTENT.projects}
+          trace={CONTENT.agentTrace}
+        />
         <ExperienceSection experience={CONTENT.experience} />
         <SkillsSection skills={CONTENT.skills} />
         <AboutSection

@@ -1,6 +1,6 @@
 ﻿import { motion as Motion } from "framer-motion";
 import { ArrowDown, FileDown } from "lucide-react";
-import AgentTrace from "./AgentTrace";
+import AsciiPortrait from "./AsciiPortrait";
 
 export default function Hero({ content, onNavigate }) {
   return (
@@ -63,7 +63,7 @@ export default function Hero({ content, onNavigate }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          <AgentTrace lines={content.agentTrace} />
+          <AsciiPortrait />
         </Motion.div>
       </div>
 

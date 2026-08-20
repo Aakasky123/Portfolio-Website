@@ -1,17 +1,12 @@
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
-import AsciiPortrait from "./AsciiPortrait";
 
 export default function AboutSection({ about, facts, education }) {
   return (
     <section id="about" className="scroll-mt-24 py-16 sm:py-24">
       <SectionHeader index="04" title="About" subtitle="Backend rigor, agent-level ambition." />
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-14">
-        <Reveal className="mx-auto w-full max-w-[420px] lg:mx-0">
-          <AsciiPortrait />
-        </Reveal>
-
-        <Reveal delay={0.1}>
+      <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+        <Reveal>
           <div className="space-y-5">
             {about.map((p) => (
               <p key={p.slice(0, 24)} className="leading-relaxed text-mute">
@@ -19,8 +14,10 @@ export default function AboutSection({ about, facts, education }) {
               </p>
             ))}
           </div>
+        </Reveal>
 
-          <dl className="mt-8 border border-line">
+        <Reveal delay={0.1}>
+          <dl className="border border-line">
             {facts.map((fact, i) => (
               <div
                 key={fact.label}

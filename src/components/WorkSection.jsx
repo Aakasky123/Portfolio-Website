@@ -1,6 +1,7 @@
 import { ArrowUpRight, Lock } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
+import AgentTrace from "./AgentTrace";
 
 function Tag({ children }) {
   return (
@@ -10,7 +11,7 @@ function Tag({ children }) {
   );
 }
 
-function FeaturedProject({ featured }) {
+function FeaturedProject({ featured, trace }) {
   return (
     <Reveal>
       <article className="ticks border border-line-strong bg-panel">
@@ -24,13 +25,20 @@ function FeaturedProject({ featured }) {
           <p className="mt-3 max-w-3xl leading-relaxed text-mute">{featured.desc}</p>
         </div>
 
-        <div className="grid gap-px bg-line sm:grid-cols-2">
-          {featured.highlights.map((h) => (
-            <div key={h.title} className="bg-panel px-6 py-5 sm:px-8">
-              <h4 className="font-display text-base font-semibold text-fg">{h.title}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-mute">{h.desc}</p>
+        <div className="grid lg:grid-cols-[1.15fr_1fr]">
+          <div className="grid gap-px bg-line sm:grid-cols-2">
+            {featured.highlights.map((h) => (
+              <div key={h.title} className="bg-panel px-6 py-5 sm:px-8">
+                <h4 className="font-display text-base font-semibold text-fg">{h.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-mute">{h.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center border-t border-line bg-ink-2 p-5 sm:p-6 lg:border-t-0 lg:border-l">
+            <div className="w-full">
+              <AgentTrace lines={trace} />
             </div>
-          ))}
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4 sm:px-8">
@@ -93,11 +101,11 @@ function ProjectCard({ project, delay }) {
   );
 }
 
-export default function WorkSection({ featured, projects }) {
+export default function WorkSection({ featured, projects, trace }) {
   return (
     <section id="work" className="scroll-mt-24 py-16 sm:py-24">
       <SectionHeader index="01" title="Selected Work" subtitle="Systems that observe, decide, act — and verify." />
-      <FeaturedProject featured={featured} />
+      <FeaturedProject featured={featured} trace={trace} />
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         {projects.map((p, i) => (
           <ProjectCard key={p.title} project={p} delay={i * 0.08} />
