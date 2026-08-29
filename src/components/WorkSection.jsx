@@ -1,4 +1,4 @@
-import { ArrowUpRight, Lock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import AgentTrace from "./AgentTrace";
@@ -47,10 +47,15 @@ function FeaturedProject({ featured, trace }) {
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
-          <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-wider text-dim uppercase">
-            <Lock size={12} />
-            {featured.note}
-          </span>
+          <a
+            href={featured.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-widest text-mute uppercase transition-colors hover:text-amber"
+          >
+            View on GitHub
+            <ArrowUpRight size={12} />
+          </a>
         </div>
       </article>
     </Reveal>
@@ -106,7 +111,7 @@ export default function WorkSection({ featured, projects, trace }) {
     <section id="work" className="scroll-mt-24 py-16 sm:py-24">
       <SectionHeader index="01" title="Selected Work" subtitle="Systems that observe, decide, act — and verify." />
       <FeaturedProject featured={featured} trace={trace} />
-      <div className="mt-6 grid gap-6 lg:grid-cols-3">
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
         {projects.map((p, i) => (
           <ProjectCard key={p.title} project={p} delay={i * 0.08} />
         ))}

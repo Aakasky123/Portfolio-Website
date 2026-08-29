@@ -1,18 +1,18 @@
 export const CONTENT = {
   name: "Aakash Siricilla",
   role: "Software Engineer",
-  focus: "AI Agents & Distributed Systems",
-  location: "New Jersey, USA",
+  focus: "AI/ML Systems & Distributed Backends",
+  location: "Jersey City, NJ",
   resumeUrl: "/Aakash_Resume.pdf",
 
   // Hero
   heroEyebrow: "Aakash Siricilla — Software Engineer",
   heroHeadline: ["I build AI agents that do real work,", "and the systems that keep them reliable."],
   heroSub:
-    "LLM agents, RAG platforms, and real-time distributed backends — Python, FastAPI, Java, Spring Boot, PostgreSQL, Redis. Currently engineering financial systems at Spectrum Capital NJ.",
+    "4+ years designing and operating distributed backend and AI/ML systems in production — Java, Spring Boot, Kafka, Python, FastAPI, Kubernetes. Currently engineering event-driven service assurance at AT&T.",
   heroStats: [
+    { value: "~40M/day", label: "events ingested by the service-assurance platform I built at AT&T" },
     { value: "~1,200", label: "automated tests behind Astra, my autonomous computer-use agent" },
-    { value: "sub-500ms", label: "request handling in a real-time anomaly-detection pipeline" },
     { value: "-70%", label: "document lookup time via hybrid RAG retrieval" },
   ],
 
@@ -22,10 +22,10 @@ export const CONTENT = {
     { label: "Email", href: "mailto:aakash.siricilla02@gmail.com" },
   ],
 
-  // Animated agent trace shown in the hero panel
+  // Animated agent trace shown in the featured Astra panel
   agentTrace: [
     { kind: "obs", text: "screenshot captured — job application form, 14 fields" },
-    { kind: "plan", text: "decide: fill `years_experience` → type \"3\"" },
+    { kind: "plan", text: "decide: fill `years_experience` → type \"4\"" },
     { kind: "act", text: "execute: DOM-verified input via Chrome MV3 runtime" },
     { kind: "verify", text: "read-back OK — field matches intent" },
     { kind: "gate", text: "submit detected → holding for human approval" },
@@ -34,73 +34,60 @@ export const CONTENT = {
 
   // About
   about: [
-    "I'm a software engineer working at the intersection of LLM systems and distributed backends. I've spent the last few years shipping production services — financial dashboards, CRM platforms, data pipelines — and now I build autonomous agents on top of that foundation: vision-guided computer use, RAG retrieval, and safety-first orchestration.",
-    "What I care about: agents that verify their own actions, APIs with measurable latency wins, data flows you can audit, and enough tests that deploys are boring.",
+    "I'm a software engineer with 4+ years designing, operating, and scaling distributed backend and AI/ML systems in production. At AT&T I own an event-driven service-assurance platform end to end — Kafka pipelines ingesting ~40M events a day, high-throughput APIs, ML anomaly detection, Kubernetes deploys, SLOs, and on-call. Before that I shipped transaction-heavy CRM services at Flipkart.",
+    "On my own time I build autonomous agents on that same foundation: Astra, my LLM computer-use agent, completes real digital tasks through a vision–action loop with approval gates, a credential vault, and ~1,200 tests. What I care about: agents that verify their own actions, services with measurable latency wins, and enough observability that incidents are boring.",
   ],
   aboutFacts: [
-    { label: "Now", value: "Software Engineer @ Spectrum Capital NJ" },
-    { label: "Education", value: "M.S. Computer Science, NJIT · GPA 3.93" },
-    { label: "Based in", value: "New Jersey, USA" },
-    { label: "Open to", value: "SWE roles — AI systems, backend, full-stack" },
+    { label: "Now", value: "Software Engineer, Distributed Systems @ AT&T" },
+    { label: "Education", value: "M.S. Computer Science, NJIT (2025)" },
+    { label: "Based in", value: "Jersey City, NJ — open to relocation" },
+    { label: "Open to", value: "AI/ML Systems, SDE, and Systems Engineering roles" },
   ],
 
   // Work
   featured: {
     title: "Astra",
-    kicker: "Flagship · Autonomous Computer-Use AI Agent",
-    desc: "An LLM-driven agent that completes real-world digital tasks end-to-end — job applications, bookings, form filling — through a vision–action loop: screenshot → single-action model decision → execution → read-back verification.",
-    tags: ["Python", "FastAPI", "Electron", "Next.js", "Chrome MV3", "SQLite"],
+    kicker: "Flagship · Autonomous LLM Computer-Use Agent (ApplyPilotAI)",
+    desc: "An LLM-driven agent that completes real digital tasks end-to-end — job applications, forms, app work — through a vision–action loop: screenshot → model action → execution → read-back verification.",
+    tags: ["Python", "FastAPI", "Chrome MV3", "Electron", "SQLite"],
     highlights: [
       {
         title: "Vision–action loop",
-        desc: "Every step is observed, decided, executed, and verified against a read-back — with step-level audit receipts and LLM-curated persistent memory.",
+        desc: "Every step is observed, decided, executed, and verified against a read-back — with per-step audit receipts and LLM-curated persistent memory.",
       },
       {
-        title: "Dual execution runtimes",
-        desc: "A Chrome MV3 extension for DOM-verified browser automation and a Windows desktop controller (UIA/SendInput), with per-task routing and an LLM-classified chat ingress.",
+        title: "Swappable execution bodies",
+        desc: "A DOM-verified Chrome MV3 extension for browser automation and a Windows desktop controller (UIA/SendInput), routed per task.",
       },
       {
-        title: "Safety-first architecture",
-        desc: "Approval gates before any submit/pay action, a credential vault isolated from the model, sensitive-field masking, and sanctioned-URL navigation.",
+        title: "Safety & reliability layer",
+        desc: "Approval gates before any submit/pay action, a credential vault the model never sees, sensitive-field masking in screenshots, and URL allow-listing.",
       },
       {
         title: "Engineered like a product",
-        desc: "FastAPI + SQLite backend with ~1,200 automated tests covering the agent loop, runtimes, and safety gates.",
+        desc: "FastAPI + SQLite backend covered by ~1,200 automated tests across the agent loop, execution bodies, and safety gates.",
       },
     ],
-    note: "Private build — happy to walk through the architecture.",
+    link: "https://github.com/Aakasky123/ApplyPilotAI",
   },
   projects: [
     {
       title: "DocuMindAI",
-      subtitle: "Enterprise Document Intelligence (RAG)",
-      desc: "Full-stack RAG platform with asynchronous ingestion, hybrid semantic + keyword retrieval over Qdrant embeddings, and contextual chat — cutting document lookup time by ~70%.",
+      subtitle: "Document Intelligence (RAG) Platform",
+      desc: "RAG platform with async ingestion, chunking/embedding pipelines, hybrid dense + keyword retrieval over Qdrant, and LLM chat — cutting document lookup time by ~70%.",
       tags: ["FastAPI", "React", "Qdrant", "Redis", "Celery", "MLflow"],
       metric: "-70% lookup time",
       highlights: [
-        "Hybrid retrieval over Qdrant embeddings with contextual chat",
-        "Celery + Redis background execution for multi-document workloads",
-        "MLflow-tracked experiments across retrieval configurations",
+        "Hybrid dense + keyword retrieval over Qdrant embeddings",
+        "Indexing offloaded to Celery/Redis background workers",
+        "Retrieval experiments tracked in MLflow",
       ],
       link: "https://github.com/Aakasky123/DocuMindAI",
     },
     {
-      title: "SentinelAI",
-      subtitle: "Real-Time Network Monitoring",
-      desc: "Real-time event-processing pipeline with streaming analytics, Redis-backed state, and sub-500ms request handling for high-volume anomaly-detection workflows.",
-      tags: ["Python", "FastAPI", "Redis", "TimescaleDB", "Next.js", "Docker"],
-      metric: "sub-500ms handling",
-      highlights: [
-        "Streaming analytics with Redis hot-state management",
-        "WebSocket-powered live dashboard with replay controls",
-        "TimescaleDB persistence off the hot ingestion path",
-      ],
-      link: "https://github.com/Aakasky123/SentinelAI",
-    },
-    {
       title: "SyncStream",
       subtitle: "Real-Time Collaborative Streaming",
-      desc: "Dockerized full-stack collaboration platform with invite-based sessions, persistent room state, and low-latency user synchronization over Spring Boot WebSockets.",
+      desc: "Dockerized real-time collaboration platform with invite-based sessions, persistent room state, and low-latency user synchronization over Spring Boot WebSockets.",
       tags: ["Java", "Spring Boot", "Next.js", "WebSockets", "PostgreSQL"],
       metric: "low-latency sync",
       highlights: [
@@ -115,38 +102,30 @@ export const CONTENT = {
   // Experience
   experience: [
     {
-      company: "Spectrum Capital NJ",
+      company: "AT&T",
       role: "Software Engineer, Distributed Systems",
-      time: "May 2025 — Present",
-      place: "New Jersey, USA",
+      time: "Sep 2024 — Present",
+      place: "Remote, USA",
       bullets: [
-        "Engineered centralized financial-operations dashboards (Java, Spring Boot, React, PostgreSQL) consolidating portfolio tracking and client workflows — cut manual reconciliation effort by 40%.",
-        "Optimized high-throughput REST APIs and complex PostgreSQL query pipelines, reducing average response latency by 35% for data-intensive internal services.",
-        "Automated end-to-end financial data ingestion and validation with Python/SQL ETL pipelines, accelerating report generation by 60%.",
-        "Architected role-based workflow orchestration and audit-tracking modules with granular access controls and transactional logging, slashing issue-investigation time by 45%.",
-        "Containerized and deployed Spring Boot services on AWS with Docker, standardizing deployment environments.",
+        "Designed an event-driven service-assurance platform (Java, Spring Boot, Kafka, PostgreSQL) ingesting ~40M network and customer-operations events/day from 12+ upstream systems — replaced batch reconciliation and cut manual effort 40%.",
+        "Built high-throughput REST/gRPC APIs sustaining ~2.5k RPS with connection pooling, Redis caching, and idempotent writes; rewrote hot-path PostgreSQL queries, reducing p95 latency 35% (480ms → 310ms).",
+        "Deployed services across dev/stage/prod on AWS EKS with Docker, Terraform, and GitHub Actions CI/CD — canary releases and automated rollbacks took release incidents from ~3/month to near zero.",
+        "Built an ML anomaly-detection service (Python, scikit-learn, XGBoost, FastAPI) scoring streaming metrics against seasonal baselines with MLflow-tracked retraining and drift monitoring — cut false pages 30% and time-to-detect from hours to <10 min.",
+        "Defined SLOs/SLIs (99.9% availability, p95 latency) with Prometheus/Grafana burn-rate alerts and runbooks; on-call rotation member leading P1/P2 root-cause analysis.",
+        "Automated health checks, log parsing, data validation, and backfills with Python and Bash — eliminated ~15 hours/week of manual runbook steps.",
       ],
     },
     {
-      company: "New Jersey Institute of Technology",
-      role: "Research Assistant",
-      time: "Mar 2024 — May 2025",
-      place: "Newark, NJ",
-      bullets: [
-        "Optimized PostgreSQL and MySQL queries across 120K+ records by redesigning joins and indexing strategies — cut query execution time by 40%.",
-        "Automated Python ETL and preprocessing pipelines, reducing manual processing effort by 60% and improving reliability of downstream ML workflows.",
-        "Built data pipelines and dashboards tracking operational and model-performance metrics, shortening reporting turnaround by 30%.",
-      ],
-    },
-    {
-      company: "Cognier Insights",
+      company: "Flipkart",
       role: "Software Engineer",
       time: "Apr 2021 — Sep 2023",
       place: "Hyderabad, India",
       bullets: [
-        "Developed customer-facing CRM modules and workflow automation (Java, Spring Boot, React, PostgreSQL), reducing manual coordination effort by 35%.",
-        "Designed REST APIs, service-layer validation, and PostgreSQL-backed data access for data-intensive workflows — improved retrieval performance by 25%.",
-        "Created reusable React components integrated with Spring Boot services, cutting feature delivery time by 30%.",
+        "Developed customer-facing CRM and workflow-automation services (Java, Spring Boot, React, PostgreSQL) used by 1,500+ internal agents — reduced manual coordination effort by 35%.",
+        "Designed REST APIs and data-access logic for transaction-heavy flows handling ~5M records/day; Redis caching and N+1 removal improved retrieval performance 25% and held p99 under target at festive-sale peaks.",
+        "Built asynchronous background-job processing (Kafka consumers, scheduled workers) with retry and dead-letter handling — raised job throughput 3x.",
+        "Shipped real-time monitoring dashboards and alerting for API health, queue lag, and error rates; kept JUnit/Mockito coverage above 80%.",
+        "Created a reusable React component library integrated with Spring Boot services — cut feature delivery time 30% across four teams.",
       ],
     },
   ],
@@ -154,37 +133,72 @@ export const CONTENT = {
   // Skills — mirrors resume categories
   skills: [
     {
-      category: "AI & LLM Systems",
+      category: "AI/ML Systems",
       items: [
-        "LLM Agents (planning · tool use · computer use)",
+        "LLMs",
         "RAG",
-        "Semantic Search",
-        "Embeddings",
-        "Prompt Engineering",
-        "OpenAI / OpenRouter APIs",
+        "Agentic Workflows (Tool Use · Computer Use)",
+        "Embeddings & Vector Search (Qdrant · FAISS)",
+        "PyTorch",
+        "scikit-learn",
+        "XGBoost",
+        "Model Serving",
         "MLflow",
-        "Vision-Guided Automation",
+        "Evaluation Harnesses",
+        "Drift Monitoring",
       ],
     },
     {
       category: "Languages",
-      items: ["Python", "Java", "TypeScript", "SQL", "C/C++"],
+      items: ["Java", "Python", "TypeScript/JavaScript", "SQL", "Bash/Shell", "C/C++"],
     },
     {
-      category: "Backend & APIs",
-      items: ["FastAPI", "Spring Boot", "REST APIs", "WebSockets", "Celery", "Async Processing", "JWT Authentication"],
+      category: "Backend Systems",
+      items: [
+        "Spring Boot",
+        "FastAPI",
+        "REST / gRPC / WebSocket APIs",
+        "Microservices",
+        "Kafka",
+        "Celery",
+        "Event-Driven Processing",
+        "Caching",
+        "Idempotency",
+        "Fault Tolerance",
+        "Capacity Planning",
+      ],
     },
     {
-      category: "Databases & Vector Stores",
-      items: ["PostgreSQL", "MySQL", "Redis", "Qdrant", "FAISS", "TimescaleDB", "SQLite"],
+      category: "Data & Storage",
+      items: [
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "TimescaleDB",
+        "SQLite",
+        "ETL / Streaming Pipelines",
+        "Query Optimization",
+        "Schema Design",
+      ],
     },
     {
-      category: "Frontend & Apps",
-      items: ["React", "Next.js", "Electron", "Chrome Extensions (MV3)", "Tailwind CSS"],
+      category: "Cloud & Ops",
+      items: [
+        "AWS (EC2 · EKS · S3 · RDS · Lambda · SQS · CloudWatch)",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "GitHub Actions CI/CD",
+        "Linux",
+        "Prometheus",
+        "Grafana",
+        "SLOs/SLIs",
+        "Incident Response",
+      ],
     },
     {
-      category: "Cloud & DevOps",
-      items: ["Docker", "Kubernetes", "AWS", "CI/CD", "GitHub Actions", "Prometheus", "Grafana"],
+      category: "Frontend & Testing",
+      items: ["React", "Next.js", "Tailwind CSS", "JUnit", "Mockito", "pytest", "Load Testing (k6)", "Git"],
     },
   ],
 
@@ -193,19 +207,19 @@ export const CONTENT = {
       school: "New Jersey Institute of Technology",
       degree: "M.S. in Computer Science",
       time: "Sep 2023 — May 2025",
-      detail: "GPA 3.93 / 4.0 · Machine Learning & MLOps, Deep Learning, Distributed Systems",
+      detail: "Distributed Systems · Deep Learning · Machine Learning & MLOps",
     },
     {
       school: "Kommuri Pratap Reddy Institute of Technology",
       degree: "B.Tech. in Computer Science & Engineering",
-      time: "Aug 2019 — May 2023",
-      detail: "GPA 8.55 / 10 · Cloud Computing, DSA, Operating Systems, Databases",
+      time: "Aug 2018 — May 2022",
+      detail: "Hyderabad, India",
     },
   ],
 
   contact: {
     heading: "Let's build something that ships.",
-    sub: "Open to software engineering roles across AI systems, backend, and full-stack. The fastest way to reach me is email — I usually reply within a day.",
+    sub: "Open to AI/ML Systems, SDE, and Systems Engineering roles — remote or relocating. The fastest way to reach me is email; I usually reply within a day.",
     email: "aakash.siricilla02@gmail.com",
     phone: "+1 (551) 375-6945",
     phoneHref: "tel:+15513756945",
