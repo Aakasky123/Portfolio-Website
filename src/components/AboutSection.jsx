@@ -1,5 +1,6 @@
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
+import Spot from "./Spot";
 
 export default function AboutSection({ about, facts, education }) {
   return (
@@ -38,14 +39,14 @@ export default function AboutSection({ about, facts, education }) {
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {education.map((edu, i) => (
           <Reveal key={edu.school} delay={i * 0.08}>
-            <div className="h-full border border-line bg-ink-2 px-5 py-4">
+            <Spot className="h-full border border-line bg-ink-2 px-5 py-4">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="font-display text-base font-semibold text-fg">{edu.school}</h3>
                 <span className="font-mono text-[11px] tracking-wider text-dim">{edu.time}</span>
               </div>
               <p className="mt-1 text-sm text-mute">{edu.degree}</p>
               <p className="mt-1 font-mono text-[11px] tracking-wide text-dim">{edu.detail}</p>
-            </div>
+            </Spot>
           </Reveal>
         ))}
       </div>

@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { motion as Motion } from "framer-motion";
 import { Menu, X, FileDown } from "lucide-react";
 
 export default function Navbar({ items, activeSection, resumeUrl, onNavigate }) {
   const [open, setOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   const handleClick = (event, id) => {
     setOpen(false);
@@ -21,20 +38,28 @@ export default function Navbar({ items, activeSection, resumeUrl, onNavigate }) 
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
-          {items.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleClick(e, item.id)}
-              className={`rounded px-3 py-1.5 font-mono text-xs tracking-widest uppercase transition-colors ${
-                activeSection === item.id
-                  ? "text-amber"
-                  : "text-mute hover:text-fg"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {items.map((item) => {
+            const active = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleClick(e, item.id)}
+                className={`relative rounded px-3 py-1.5 font-mono text-xs tracking-widest uppercase transition-colors ${
+                  active ? "text-amber" : "text-mute hover:text-fg"
+                }`}
+              >
+                {item.label}
+                {active && (
+                  <Motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-x-3 -bottom-[1px] h-px bg-amber"
+                    transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                  />
+                )}
+              </a>
+            );
+          })}
           <a
             href={resumeUrl}
             download
@@ -54,6 +79,13 @@ export default function Navbar({ items, activeSection, resumeUrl, onNavigate }) 
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
+
+      {/* Scroll progress */}
+      <div
+        aria-hidden
+        className="absolute bottom-[-1px] left-0 h-px bg-amber glow-dot"
+        style={{ width: `${progress * 100}%` }}
+      />
 
       {open && (
         <div className="border-t border-line bg-ink px-4 pb-4 md:hidden">

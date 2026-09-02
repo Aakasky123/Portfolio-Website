@@ -1,3 +1,4 @@
+import { motion as Motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 export default function SectionHeader({ index, title, subtitle }) {
@@ -11,7 +12,13 @@ export default function SectionHeader({ index, title, subtitle }) {
           {subtitle}
         </h2>
       )}
-      <div className="mt-6 h-px w-full bg-line" />
+      <Motion.div
+        className="mt-6 h-px w-full origin-left bg-gradient-to-r from-amber via-line-strong to-line"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      />
     </Reveal>
   );
 }

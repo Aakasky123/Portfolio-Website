@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CONTENT, NAV_ITEMS } from "./data/content";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 import WorkSection from "./components/WorkSection";
 import ExperienceSection from "./components/ExperienceSection";
 import SkillsSection from "./components/SkillsSection";
@@ -53,7 +54,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div className="grain relative min-h-screen overflow-x-hidden">
       <Navbar
         items={NAV_ITEMS}
         activeSection={activeSection}
@@ -63,6 +64,7 @@ export default function Portfolio() {
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
         <Hero content={CONTENT} onNavigate={handleNavigate} />
+        <Marquee items={CONTENT.ticker} />
         <WorkSection
           featured={CONTENT.featured}
           projects={CONTENT.projects}

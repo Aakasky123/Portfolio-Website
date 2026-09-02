@@ -16,6 +16,27 @@ export const CONTENT = {
     { value: "-70%", label: "document lookup time via hybrid RAG retrieval" },
   ],
 
+  ticker: [
+    "Java",
+    "Spring Boot",
+    "Kafka",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Redis",
+    "Kubernetes",
+    "AWS",
+    "Terraform",
+    "LLM Agents",
+    "RAG",
+    "PyTorch",
+    "XGBoost",
+    "gRPC",
+    "React",
+    "Next.js",
+    "Prometheus",
+  ],
+
   socials: [
     { label: "GitHub", href: "https://github.com/Aakasky123" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/aakash-siricilla" },

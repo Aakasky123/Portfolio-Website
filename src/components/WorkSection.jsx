@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import AgentTrace from "./AgentTrace";
+import Spot from "./Spot";
 
 function Tag({ children }) {
   return (
@@ -14,7 +15,7 @@ function Tag({ children }) {
 function FeaturedProject({ featured, trace }) {
   return (
     <Reveal>
-      <article className="ticks border border-line-strong bg-panel">
+      <Spot as="article" className="ticks border border-line-strong bg-panel">
         <div className="border-b border-line px-6 py-5 sm:px-8">
           <p className="font-mono text-[11px] tracking-[0.25em] text-amber uppercase">
             {featured.kicker}
@@ -57,7 +58,7 @@ function FeaturedProject({ featured, trace }) {
             <ArrowUpRight size={12} />
           </a>
         </div>
-      </article>
+      </Spot>
     </Reveal>
   );
 }
@@ -65,7 +66,7 @@ function FeaturedProject({ featured, trace }) {
 function ProjectCard({ project, delay }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <article className="flex h-full flex-col border border-line bg-ink-2 transition-colors hover:border-line-strong">
+      <Spot as="article" className="flex h-full flex-col border border-line bg-ink-2">
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <span className="font-mono text-[11px] tracking-widest text-amber uppercase">
             {project.metric}
@@ -101,7 +102,7 @@ function ProjectCard({ project, delay }) {
             ))}
           </div>
         </div>
-      </article>
+      </Spot>
     </Reveal>
   );
 }

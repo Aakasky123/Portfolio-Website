@@ -72,7 +72,7 @@ export default function ContactSection({ contact }) {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="inline-flex items-center gap-2 bg-amber px-5 py-2.5 font-mono text-xs font-semibold tracking-widest text-ink uppercase transition-colors hover:bg-amber-deep hover:text-fg disabled:opacity-60"
+                className="shine inline-flex items-center gap-2 bg-amber px-5 py-2.5 font-mono text-xs font-semibold tracking-widest text-ink uppercase transition-colors hover:bg-amber-deep hover:text-fg disabled:opacity-60"
               >
                 <Send size={13} />
                 {status === "sending" ? "Sending…" : "Send message"}
