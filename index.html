@@ -2,30 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aakash Siricilla — Software Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Aakash Siricilla — Agents that act. Systems that hold.</title>
     <meta
       name="description"
-      content="Software engineer building AI agent systems and distributed backends. LLM agents, RAG platforms, real-time pipelines — Python, FastAPI, Java, Spring Boot."
+      content="Aakash Siricilla is a software engineer who builds LLM agents that operate real software, and the distributed systems that keep them reliable. Currently at AT&T."
     />
-    <meta property="og:title" content="Aakash Siricilla — Software Engineer" />
-    <meta
-      property="og:description"
-      content="AI agents that do real work, and the systems that keep them reliable."
-    />
+    <meta name="theme-color" content="#eeece7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aakashsiricilla-portfolio.vercel.app/" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
+    <meta property="og:title" content="Aakash Siricilla — Agents that act. Systems that hold." />
+    <meta
+      property="og:description"
+      content="LLM agents that look at the screen, act, and check their own work — and the distributed systems underneath them. Press V to see the site the way the agent does."
     />
+    <meta property="og:image" content="https://aakashsiricilla-portfolio.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://aakashsiricilla-portfolio.vercel.app/og.png" />
+    <link rel="canonical" href="https://aakashsiricilla-portfolio.vercel.app/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aakash Siricilla",
+        "jobTitle": "Software Engineer",
+        "description": "Software engineer building LLM agents and distributed systems.",
+        "url": "https://aakashsiricilla-portfolio.vercel.app/",
+        "email": "mailto:aakash.siricilla02@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Jersey City", "addressRegion": "NJ", "addressCountry": "US" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "New Jersey Institute of Technology" },
+          { "@type": "CollegeOrUniversity", "name": "Kommuri Pratap Reddy Institute of Technology" }
+        ],
+        "sameAs": ["https://github.com/Aakasky123", "https://www.linkedin.com/in/aakash-siricilla"]
+      }
+    </script>
+
+    <script>
+      // The page boots in "agent vision" and scans into the human view.
+      // Flag it before first paint so there is no flash of the wrong state.
+      (function () {
+        var html = document.documentElement;
+        html.classList.add("js");
+        var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduce) html.classList.add("is-booting");
+      })();
+    </script>
+    <style>
+      #boot {
+        display: none;
+        position: fixed;
+        inset: 0;
+        place-items: center;
+        margin: 0;
+        font: 500 11px/1 ui-monospace, Menlo, Consolas, monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #ff4f12;
+      }
+      .js #boot {
+        display: grid;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Shown only until the app mounts (slow connections); React replaces it. -->
+      <p id="boot">● Astra · observing</p>
+    </div>
+    <noscript>
+      <p style="font: 16px/1.5 system-ui; padding: 2rem; max-width: 40rem">
+        Aakash Siricilla — software engineer building LLM agents and distributed systems.
+        Email <a href="mailto:aakash.siricilla02@gmail.com">aakash.siricilla02@gmail.com</a>
+        or read the <a href="/Aakash_Resume.pdf">résumé (PDF)</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

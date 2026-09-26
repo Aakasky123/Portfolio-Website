@@ -1,0 +1,84 @@
+.footer {
+  margin-top: clamp(5rem, 9vw, 8rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ink);
+  overflow: hidden;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+.footer__col {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.footer__col .label:first-child {
+  color: var(--ink);
+}
+.footer__col--end {
+  justify-items: end;
+  text-align: right;
+}
+.footer__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: inherit;
+}
+.footer__key:hover {
+  color: var(--signal-ink);
+}
+.footer__col .kbd {
+  margin-right: 0.35rem;
+}
+
+/* The name, sized to fill the measure (its width ≈ 4.7 × font-size) */
+.footer__mark {
+  container-type: inline-size;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding-inline: var(--gutter);
+  line-height: 0.74;
+  white-space: nowrap;
+  text-align: center;
+}
+.footer__mark span {
+  display: inline-block;
+  font-size: calc(100cqw / 4.72);
+  letter-spacing: -0.035em;
+  transform: translateY(0.08em);
+}
+
+.footer__base {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem calc(1rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--ink);
+  position: relative;
+  background: var(--paper);
+}
+
+@media (max-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer__col--end {
+    justify-items: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__base {
+    flex-direction: column;
+  }
+}

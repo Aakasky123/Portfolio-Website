@@ -1,0 +1,139 @@
+.about__rule {
+  transform: none;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* ─── Portrait ─────────────────────────────────────────────────────────────── */
+
+.portrait {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+}
+.portrait__frame {
+  position: relative;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--rule-2);
+}
+.portrait__canvas {
+  width: 100%;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+.portrait__c {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--ink);
+}
+.portrait__c--tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.portrait__c--br {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 2px 2px 0;
+}
+.portrait__cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* ─── Text ─────────────────────────────────────────────────────────────────── */
+
+.about__title {
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+}
+.about__body {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  display: grid;
+  gap: 1.1em;
+  max-width: 36em;
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.about__body p:first-child::first-letter {
+  font-family: var(--f-display);
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.82;
+  margin: 0.06em 0.08em 0 0;
+  color: var(--ink);
+}
+
+.facts {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--ink);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.facts dd {
+  font-size: 1rem;
+}
+
+.edu {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--ink);
+}
+.edu li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.edu__time {
+  padding-top: 0.5rem;
+  color: var(--ink);
+}
+.edu__degree {
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+.edu__school {
+  margin-top: 0.4rem;
+  font-size: 0.9375rem;
+}
+.edu__detail {
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 860px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+  .portrait {
+    position: relative;
+    top: 0;
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .facts > div,
+  .edu li {
+    grid-template-columns: 5.5rem 1fr;
+  }
+}

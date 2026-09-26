@@ -1,0 +1,193 @@
+/* ─── The agent's pointer ──────────────────────────────────────────────────── */
+
+.hagent {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: clip;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.hagent[data-on="true"] {
+  opacity: 1;
+}
+
+.apointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: translate3d(-200px, -200px, 0);
+  will-change: transform;
+  transition: opacity 0.4s var(--ease);
+}
+.apointer__mark {
+  position: absolute;
+  /* place the arrow's tip exactly on the pointer's coordinate */
+  left: -6.5px;
+  top: -2.9px;
+  width: 26px;
+  height: 26px;
+  max-width: none;
+  filter: drop-shadow(0 2px 3px rgb(18 18 17 / 0.25));
+  transition: transform 0.25s var(--ease-snap);
+}
+.apointer.is-click .apointer__mark {
+  animation: pointer-press 0.36s var(--ease);
+}
+@keyframes pointer-press {
+  40% {
+    transform: scale(0.84) translate(1px, 1px);
+  }
+}
+.apointer__ring {
+  position: absolute;
+  left: -14px;
+  top: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--signal);
+  opacity: 0;
+}
+.apointer.is-click .apointer__ring {
+  animation: pointer-ring 0.7s var(--ease) forwards;
+}
+@keyframes pointer-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.1);
+  }
+}
+
+.apointer__tag {
+  position: absolute;
+  left: 16px;
+  top: 24px;
+  display: flex;
+  align-items: stretch;
+  white-space: nowrap;
+  font: 500 0.6875rem/1 var(--f-mono);
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px -8px rgb(18 18 17 / 0.35);
+}
+.apointer__who {
+  padding: 0.4rem 0.45rem;
+  background: var(--signal);
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.apointer__step {
+  padding: 0.4rem 0.55rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+.apointer__step b {
+  font-weight: 600;
+  color: var(--signal);
+  margin-right: 0.35rem;
+}
+.apointer__step[data-tag="VRFY"] b {
+  color: #5fdc95;
+}
+.apointer__step[data-tag="HOLD"] b,
+.apointer__step[data-tag="GATE"] b {
+  color: #ffc24d;
+}
+
+.hagent[data-yield="true"] .apointer {
+  opacity: 0.55;
+}
+
+/* ─── Detection box ────────────────────────────────────────────────────────── */
+
+.dbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  box-shadow: inset 0 0 0 1px rgb(255 79 18 / 0.55);
+  background: var(--signal-wash);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.dbox[data-show="true"] {
+  opacity: 1;
+  transition: transform 0.2s var(--ease), opacity 0.15s;
+}
+.dbox[data-show="true"] .dbox__c {
+  animation: lock-on 0.5s var(--ease) both;
+}
+@keyframes lock-on {
+  from {
+    opacity: 0;
+    translate: var(--lx, 0) var(--ly, 0);
+  }
+}
+.dbox__c--tl {
+  --lx: -10px;
+  --ly: -10px;
+}
+.dbox__c--tr {
+  --lx: 10px;
+  --ly: -10px;
+}
+.dbox__c--bl {
+  --lx: -10px;
+  --ly: 10px;
+}
+.dbox__c--br {
+  --lx: 10px;
+  --ly: 10px;
+}
+.dbox__label {
+  position: absolute;
+  left: -1px;
+  bottom: 100%;
+  padding: 0.28rem 0.4rem 0.22rem;
+  background: var(--signal);
+  color: var(--ink);
+  font: 500 0.625rem/1 var(--f-mono);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.dbox__c {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 0 solid var(--signal);
+}
+.dbox__c--tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.dbox__c--tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+}
+.dbox__c--bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+}
+.dbox__c--br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+@media (hover: none) {
+  .apointer__tag {
+    max-width: 70vw;
+  }
+}

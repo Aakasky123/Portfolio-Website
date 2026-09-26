@@ -1,0 +1,143 @@
+.contact {
+  padding-top: clamp(7rem, 14vw, 13rem);
+}
+
+.contact__title {
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(3.25rem, 10.6vw, 13.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+}
+.contact__caret {
+  display: inline-block;
+  width: 0.07em;
+  height: 0.72em;
+  margin-left: 0.06em;
+  vertical-align: -0.02em;
+  background: var(--signal);
+  animation: caret 1.05s steps(1) infinite;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ink);
+}
+
+.contact__body {
+  max-width: 34em;
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.contact__email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.25rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+.contact__addr {
+  font-size: clamp(1.9rem, 3.9vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  background: linear-gradient(var(--signal), var(--signal)) 0 100% / 0 2px no-repeat;
+  transition: background-size 0.6s var(--ease), color 0.3s;
+  padding-bottom: 0.08em;
+}
+.contact__addr:hover {
+  background-size: 100% 2px;
+}
+.contact__copy {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ink);
+  color: var(--ink);
+  transition: background-color 0.25s, color 0.25s;
+}
+.contact__copy:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  margin-top: 1.75rem;
+  font-size: 1rem;
+}
+
+/* ─── Form ─────────────────────────────────────────────────────────────────── */
+
+.cform {
+  display: grid;
+  gap: 1.1rem;
+  align-content: start;
+}
+.cform__title {
+  color: var(--ink);
+}
+.cform__field {
+  display: grid;
+  gap: 0.35rem;
+}
+.cform__field input,
+.cform__field textarea {
+  width: 100%;
+  padding: 0.55rem 0 0.6rem;
+  border: 0;
+  border-bottom: 1px solid var(--rule-2);
+  border-radius: 0;
+  background: transparent;
+  font-size: 1.0625rem;
+  outline: none;
+  transition: border-color 0.25s;
+  resize: vertical;
+}
+.cform__field textarea {
+  min-height: 6.5rem;
+  line-height: 1.5;
+}
+.cform__field textarea::placeholder {
+  color: var(--faint);
+}
+.cform__field input:focus,
+.cform__field textarea:focus {
+  border-bottom-color: var(--signal);
+  box-shadow: 0 1px 0 0 var(--signal);
+}
+.cform__foot {
+  display: grid;
+  gap: 0.8rem;
+  justify-items: start;
+  margin-top: 0.4rem;
+}
+.cform__foot .btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.cform__status {
+  min-height: 1.2em;
+  font-size: 0.75rem;
+  color: var(--mute);
+}
+.cform__status b {
+  color: var(--ok);
+  font-weight: 600;
+}
+.cform__status .cform__err {
+  color: var(--signal-ink);
+}
+
+@media (max-width: 860px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
