@@ -11,16 +11,16 @@ Computer-use agents look at screens, so this site has two viewers, a human and a
 - **Human view.** Paper, ink, and a big editorial serif. This is Aakash talking.
 - **Agent view.** The same live page the way an agent perceives it: inverted, drained of colour, with a detection box, role, confidence score, and click coordinates on every element. Press **V** (or use the Human / Agent switch) at any time.
 
-The page boots in agent view and scans into the human view. An agent cursor ("Astra") then works the hero. It uses speed-and-separation monitoring, like a collaborative robot: move your mouse near it and it stops, steps back, and waits.
+The page boots in agent view and scans into the human view. An agent cursor ("TARS") then works the hero. It uses speed-and-separation monitoring, like a collaborative robot: move your mouse near it and it stops, steps back, and waits.
 
 ## What's on the page
 
 | Chapter | What it shows |
 | --- | --- |
 | **Hero** | The couplet, a live Jersey City clock, and the agent cursor annotating the page. |
-| **01 · The agent** | An interactive run of Astra filling in a job application (Aakash's, addressed to the visitor). It types, opens a dropdown, and pulls a password from a vault the model never sees. Then it **stops at an approval gate** and the visitor has to click Approve or Deny. It ends with an audit receipt. Also includes DocuMindAI, with hybrid retrieval and RRF re-ranking played out step by step. |
+| **01 · The agent** | An interactive run of TARS filling in a job application (Aakash's, addressed to the visitor). It types, opens a dropdown, and pulls a password from a vault the model never sees. Then it **stops at an approval gate** and the visitor has to click Approve or Deny. It ends with an audit receipt. Also includes DocuMindAI, with hybrid retrieval and RRF re-ranking played out step by step. |
 | **02 · The systems** | A canvas where **one dot is one event** at the real ~463/s of a 40M-events/day pipeline. A Stream ⇄ Batch toggle shows why replacing batch reconciliation cut time-to-detect from hours to minutes. Also includes measured outcomes, the experience log, and a SyncStream specimen (two clients synced over a simulated socket). |
-| **03 · The stack** | A typographic wall. Filter by *where* a tool was used (AT&T, Flipkart, Astra…). |
+| **03 · The stack** | A typographic wall. Filter by *where* a tool was used (AT&T, Flipkart, TARS…). |
 | **04 · The human** | The portrait, re-rendered from ASCII data as a scanline engraving with a loupe under the cursor. |
 | **Contact** | "Awaiting human input." |
 
@@ -53,7 +53,7 @@ src/
   components/
     VisionLayer   the agent's view: backdrop-filter + per-frame detection boxes
     HeroAgent     the cursor in the hero, and its safety-radius yielding
-    AstraDemo     the scripted run + approval gate + audit receipt
+    TarsDemo     the scripted run + approval gate + audit receipt
     Stream        the 1-dot-per-event pipeline canvas
     Portrait      the scanline engraving
     …             one component + stylesheet per section

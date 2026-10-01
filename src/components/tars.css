@@ -1,11 +1,11 @@
-.astra {
+.tars {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   border: 1px solid var(--ink);
   background: var(--paper-2);
 }
 
-.astra__stage {
+.tars__stage {
   position: relative;
   padding: clamp(0.75rem, 1.6vw, 1.5rem);
   border-right: 1px solid var(--ink);
@@ -16,7 +16,7 @@
 
 /* ─── The foreign website ──────────────────────────────────────────────────── */
 
-.astra__screen {
+.tars__screen {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -295,13 +295,13 @@
 
 /* ─── What the agent sees at each screenshot ───────────────────────────────── */
 
-.astra__viewfinder {
+.tars__viewfinder {
   position: absolute;
   inset: 0;
   pointer-events: none;
   opacity: 0;
 }
-.astra__screen[data-shot="true"] .astra__viewfinder {
+.tars__screen[data-shot="true"] .tars__viewfinder {
   animation: flash 1.1s ease-out;
 }
 @keyframes flash {
@@ -320,7 +320,7 @@
     opacity: 0;
   }
 }
-.astra__viewfinder {
+.tars__viewfinder {
   background-repeat: no-repeat;
   --vf: var(--signal);
   background-image: linear-gradient(var(--vf), var(--vf)), linear-gradient(var(--vf), var(--vf)),
@@ -333,7 +333,7 @@
     calc(100% - 10px) calc(100% - 10px);
 }
 
-.astra__screen[data-shot="true"] :is(.fx-field, .fx-submit)::after {
+.tars__screen[data-shot="true"] :is(.fx-field, .fx-submit)::after {
   content: attr(data-box);
   position: absolute;
   inset: -5px;
@@ -345,7 +345,7 @@
   pointer-events: none;
   animation: box-in 0.45s var(--ease) both;
 }
-.astra__screen[data-shot="true"] :is(.fx-field, .fx-submit)::before {
+.tars__screen[data-shot="true"] :is(.fx-field, .fx-submit)::before {
   content: attr(data-box);
   position: absolute;
   z-index: 5;
@@ -359,7 +359,7 @@
   white-space: nowrap;
   animation: box-in 0.45s var(--ease) both;
 }
-.astra__screen[data-shot="true"] .fx-submit::before {
+.tars__screen[data-shot="true"] .fx-submit::before {
   right: auto;
   left: -5px;
 }
@@ -369,14 +369,14 @@
     transform: scale(1.04);
   }
 }
-.astra__screen[data-shot="true"] .fx-submit::before {
+.tars__screen[data-shot="true"] .fx-submit::before {
   animation-name: none;
 }
-.astra__screen[data-shot="true"] .fx-mask {
+.tars__screen[data-shot="true"] .fx-mask {
   display: flex;
 }
 
-.astra__pointer {
+.tars__pointer {
   z-index: 6;
 }
 
@@ -451,7 +451,7 @@
 
 /* ─── Trace ────────────────────────────────────────────────────────────────── */
 
-.astra__trace {
+.tars__trace {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -667,10 +667,10 @@
 /* ─── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 1060px) {
-  .astra {
+  .tars {
     grid-template-columns: 1fr;
   }
-  .astra__stage {
+  .tars__stage {
     border-right: 0;
     border-bottom: 1px solid var(--ink);
   }

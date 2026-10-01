@@ -31,19 +31,19 @@ export const HERO = {
   open: "AI/ML systems, SDE & systems engineering roles",
   stats: [
     { value: "40M", unit: "events / day", label: "through the service-assurance platform I built at AT&T" },
-    { value: "1,200", unit: "tests", label: "behind Astra, my autonomous computer-use agent" },
+    { value: "1,200", unit: "tests", label: "behind TARS, my autonomous computer-use agent" },
     { value: "−70%", unit: "lookup time", label: "document search, via hybrid RAG retrieval" },
   ],
 };
 
 // ─── 01 · The agent ──────────────────────────────────────────────────────────
 
-export const ASTRA = {
-  title: "Astra",
-  repo: "https://github.com/Aakasky123/ApplyPilotAI",
-  headline: ["Astra uses a computer", "the way you do."],
+// TARS's repo isn't public, so the site offers a walkthrough instead of a link.
+export const TARS = {
+  title: "TARS",
+  headline: ["TARS uses a computer", "the way you do."],
   lead:
-    "Astra is an autonomous LLM agent that finishes real digital tasks: job applications, forms, app work. It runs a vision–action loop. Take a screenshot, pick an action, execute it, then read the screen back to prove the action actually happened.",
+    "TARS is an autonomous LLM agent that completes multi-step tasks in web and desktop apps. It runs a vision–action loop: take a screenshot, pick an action, execute it, then read the screen back to prove the action actually happened.",
   demoLead: "Here it is applying for a job. Yours, specifically.",
   stack: ["Python", "FastAPI", "Chrome MV3", "Electron", "SQLite"],
   principles: [
@@ -57,7 +57,7 @@ export const ASTRA = {
       n: "ii",
       title: "Two bodies, one brain.",
       body:
-        "A DOM-verified Chrome MV3 extension drives the browser; a Windows controller (UIA + SendInput) drives native apps. Each task is routed to the right body.",
+        "Swappable execution backends: a DOM-verified Chrome MV3 extension drives the browser, and a desktop driver (UIA + SendInput) drives native apps.",
     },
     {
       n: "iii",
@@ -69,7 +69,7 @@ export const ASTRA = {
       n: "iv",
       title: "Tested like a product.",
       body:
-        "A FastAPI + SQLite backend covered by roughly 1,200 automated tests across the agent loop, both execution bodies, and the safety gates.",
+        "A FastAPI + SQLite backend covered by roughly 1,200 automated tests across the agent loop, both execution backends, and the safety gates.",
     },
   ],
 };
@@ -147,13 +147,13 @@ export const EXPERIENCE = [
       "Owns an event-driven service-assurance platform end to end: ~40M events a day from 12+ upstream systems, APIs at ~2.5k RPS, ML anomaly detection, and the on-call rotation.",
     stack: ["Java", "Spring Boot", "Kafka", "PostgreSQL", "Redis", "gRPC", "AWS EKS", "Terraform", "Python", "XGBoost", "Prometheus"],
     log: [
-      "Designed and implemented an event-driven service-assurance platform (Java, Spring Boot, Kafka, PostgreSQL) ingesting ~40M network and customer-operations events/day from 12+ upstream systems, replacing batch reconciliation and cutting manual effort 40%.",
-      "Built high-throughput REST/gRPC APIs sustaining ~2.5k RPS with connection pooling, Redis caching and idempotent writes; rewrote hot-path PostgreSQL queries with composite indexes and query-plan tuning, cutting p95 latency 35% (480ms → 310ms).",
-      "Deployed services across dev/stage/prod on AWS EKS with Docker, Terraform and GitHub Actions CI/CD — canary releases, automated rollbacks, config management — taking release-related incidents from ~3/month to near zero.",
-      "Built an ML anomaly-detection service (Python, scikit-learn, XGBoost, FastAPI) scoring streaming metrics against seasonal baselines, with MLflow-tracked retraining and drift monitoring; cut false pages 30% and time-to-detect from hours to <10 min.",
-      "Defined SLOs/SLIs (99.9% availability, p95 latency) with Prometheus/Grafana and CloudWatch burn-rate alerts, and wrote the runbooks; on-call rotation member leading P1/P2 root-cause analysis.",
-      "Automated health checks, log parsing, data validation, backfills and scheduled maintenance with Python and Bash — eliminating ~15 hours/week of manual runbook steps.",
-      "Partnered with product, network-operations and security teams on requirements, capacity plans and test procedures; delivered role-based access control and transactional audit logging, cutting investigation time 45%.",
+      "Designed and built an event-driven service-assurance platform (Java, Spring Boot, Kafka, PostgreSQL) ingesting ~40M network and customer-operations events/day from 12+ upstream systems, replacing batch reconciliation and cutting manual effort 40%.",
+      "Built REST/gRPC APIs sustaining ~2.5k RPS with connection pooling, Redis caching, and idempotent writes; rewrote hot-path PostgreSQL queries with composite indexes and query-plan tuning, cutting p95 latency 35% (480ms → 310ms).",
+      "Deployed services across dev/stage/prod on AWS EKS with Docker, Terraform, and GitHub Actions CI/CD, adding canary releases, automated rollbacks, and config management that took release-related incidents from ~3/month to near zero.",
+      "Built a Python/FastAPI anomaly-detection service (scikit-learn, XGBoost) that scores streaming operational metrics against seasonal baselines, with MLflow-tracked retraining and drift monitoring; cut false pages 30% and time-to-detect from hours to under 10 minutes.",
+      "Defined SLOs/SLIs (99.9% availability, p95 latency) with burn-rate alerts in Prometheus, Grafana, and CloudWatch, and wrote the runbooks; serve in the on-call rotation and lead P1/P2 root-cause analysis.",
+      "Automated health checks, log parsing, data validation, backfills, and scheduled maintenance in Python and Bash, eliminating ~15 hours/week of manual runbook work and reducing on-call toil.",
+      "Delivered role-based access control and transactional audit logging, cutting investigation time 45%; partnered with product, network operations, and security teams on requirements, capacity plans, and test procedures.",
     ],
   },
   {
@@ -166,11 +166,11 @@ export const EXPERIENCE = [
       "Built CRM and workflow-automation services used by 1,500+ internal agents, on transaction-heavy flows of ~5M records a day that had to hold p99 through festive-sale peaks.",
     stack: ["Java", "Spring Boot", "React", "PostgreSQL", "Redis", "Kafka", "JUnit", "Mockito"],
     log: [
-      "Developed customer-facing CRM and workflow-automation services (Java, Spring Boot, React, PostgreSQL) used by 1,500+ internal agents for lead management and client onboarding, reducing manual coordination effort 35%.",
-      "Designed REST APIs, service-layer validation and data-access logic for transaction-heavy flows handling ~5M records/day; Redis caching and N+1 removal improved retrieval performance 25% and held p99 under target at festive-sale peaks.",
-      "Built asynchronous background-job processing (Kafka consumers, scheduled workers) for notifications, exports and batch updates, with retry and dead-letter handling — raising job throughput 3x.",
-      "Shipped real-time monitoring dashboards and alerting for API health, queue lag and error rates; kept JUnit/Mockito coverage above 80%.",
-      "Created a reusable React component library integrated with Spring Boot services — cutting feature delivery time 30% and standardizing UI across four teams.",
+      "Built CRM and workflow-automation services (Java, Spring Boot, React, PostgreSQL) used by 1,500+ internal agents for lead management and client onboarding, reducing manual coordination effort 35%.",
+      "Designed REST APIs, service-layer validation, and data-access logic for transaction-heavy flows handling ~5M records/day; added Redis caching and removed N+1 queries, improving retrieval performance 25% and holding p99 latency within target through festive-sale peaks.",
+      "Built asynchronous job processing (Kafka consumers and scheduled workers) for notifications, exports, and batch updates, moving long-running work off request threads and tripling job throughput with retries and dead-letter handling.",
+      "Built monitoring dashboards and alerts for API health, queue lag, and error rates; resolved production issues within service-level objectives and shipped fixes through CI with JUnit/Mockito coverage above 80%.",
+      "Created a reusable React component library integrated with Spring Boot services, cutting feature delivery time 30% and standardizing UI across four teams.",
     ],
   },
 ];
@@ -186,91 +186,93 @@ export const SYNCSTREAM = {
 
 // ─── 03 · Stack ──────────────────────────────────────────────────────────────
 
+// Same groups, same order as the résumé.
 export const STACK = [
-  {
-    id: "ai",
-    label: "AI / ML systems",
-    items: [
-      "LLMs", "RAG", "Agentic workflows (tool use, computer use)", "Embeddings & vector search (Qdrant, FAISS)",
-      "PyTorch", "scikit-learn", "XGBoost", "Model serving", "MLflow", "Evaluation harnesses", "Drift monitoring",
-    ],
-  },
-  {
-    id: "backend",
-    label: "Backend systems",
-    items: [
-      "Spring Boot", "FastAPI", "REST, gRPC & WebSocket APIs", "Microservices", "Kafka", "Celery",
-      "Event-driven processing", "Caching", "Idempotency", "Fault tolerance", "Capacity planning",
-    ],
-  },
   {
     id: "lang",
     label: "Languages",
     items: ["Java", "Python", "TypeScript / JavaScript", "SQL", "Bash", "C / C++"],
   },
   {
+    id: "backend",
+    label: "Backend",
+    items: [
+      "Spring Boot", "FastAPI", "REST", "gRPC", "WebSockets", "Microservices", "Kafka", "Celery",
+      "Event-driven architecture",
+    ],
+  },
+  {
     id: "data",
     label: "Data & storage",
     items: [
-      "PostgreSQL", "MySQL", "Redis", "TimescaleDB", "SQLite", "ETL & streaming pipelines",
-      "Query optimization", "Schema design",
+      "PostgreSQL", "MySQL", "Redis", "TimescaleDB", "SQLite", "Query optimization", "Schema design",
+      "ETL & streaming pipelines",
     ],
   },
   {
-    id: "ops",
-    label: "Cloud & operations",
+    id: "cloud",
+    label: "Cloud & DevOps",
     items: [
       "AWS (EC2, EKS, S3, RDS, Lambda, SQS, CloudWatch)", "Docker", "Kubernetes", "Terraform",
-      "GitHub Actions CI/CD", "Linux", "Prometheus", "Grafana", "SLOs & SLIs", "On-call & incident response", "Runbooks",
+      "GitHub Actions", "Git", "Linux",
     ],
+  },
+  {
+    id: "obs",
+    label: "Observability & testing",
+    items: ["Prometheus", "Grafana", "CloudWatch", "SLOs & SLIs", "JUnit", "Mockito", "pytest", "k6"],
   },
   {
     id: "front",
-    label: "Frontend & testing",
-    items: ["React", "Next.js", "Tailwind CSS", "JUnit", "Mockito", "pytest", "k6 load testing", "Git"],
+    label: "Frontend",
+    items: ["React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    id: "ai",
+    label: "AI / ML",
+    items: ["PyTorch", "scikit-learn", "XGBoost", "MLflow", "LLMs", "RAG", "Vector search (Qdrant, FAISS)"],
   },
 ];
 
-// Where the tools were actually used — powers the hover cross-reference.
+// Where each tool was actually used, per the résumé. Powers the "Used at" filter.
 export const USED_IN = {
-  LLMs: ["Astra", "DocuMindAI"],
-  RAG: ["DocuMindAI"],
-  "Agentic workflows (tool use, computer use)": ["Astra"],
-  "Embeddings & vector search (Qdrant, FAISS)": ["DocuMindAI"],
-  "scikit-learn": ["AT&T"],
-  XGBoost: ["AT&T"],
-  MLflow: ["AT&T", "DocuMindAI"],
-  "Drift monitoring": ["AT&T"],
+  Java: ["AT&T", "Flipkart", "SyncStream"],
+  Python: ["AT&T", "TARS", "DocuMindAI"],
+  "TypeScript / JavaScript": ["TARS", "SyncStream", "Flipkart"],
+  SQL: ["AT&T", "Flipkart"],
+  Bash: ["AT&T"],
   "Spring Boot": ["AT&T", "Flipkart", "SyncStream"],
-  FastAPI: ["AT&T", "Astra", "DocuMindAI"],
-  "REST, gRPC & WebSocket APIs": ["AT&T", "Flipkart", "SyncStream"],
+  FastAPI: ["AT&T", "TARS", "DocuMindAI"],
+  REST: ["AT&T", "Flipkart"],
+  gRPC: ["AT&T"],
+  WebSockets: ["SyncStream"],
   Kafka: ["AT&T", "Flipkart"],
   Celery: ["DocuMindAI"],
-  "Event-driven processing": ["AT&T", "Flipkart"],
-  Caching: ["AT&T", "Flipkart"],
-  Idempotency: ["AT&T"],
-  "Capacity planning": ["AT&T"],
-  Java: ["AT&T", "Flipkart", "SyncStream"],
-  Python: ["AT&T", "Astra", "DocuMindAI"],
-  "TypeScript / JavaScript": ["Astra", "SyncStream", "Flipkart"],
-  Bash: ["AT&T"],
+  "Event-driven architecture": ["AT&T", "Flipkart"],
   PostgreSQL: ["AT&T", "Flipkart", "SyncStream"],
   Redis: ["AT&T", "Flipkart", "DocuMindAI"],
-  SQLite: ["Astra"],
+  SQLite: ["TARS"],
+  "Query optimization": ["AT&T", "Flipkart"],
+  "ETL & streaming pipelines": ["AT&T"],
   "AWS (EC2, EKS, S3, RDS, Lambda, SQS, CloudWatch)": ["AT&T"],
   Docker: ["AT&T", "DocuMindAI", "SyncStream"],
   Kubernetes: ["AT&T"],
   Terraform: ["AT&T"],
-  "GitHub Actions CI/CD": ["AT&T"],
+  "GitHub Actions": ["AT&T"],
   Prometheus: ["AT&T"],
   Grafana: ["AT&T"],
+  CloudWatch: ["AT&T"],
   "SLOs & SLIs": ["AT&T"],
-  "On-call & incident response": ["AT&T"],
-  Runbooks: ["AT&T"],
-  React: ["Flipkart", "DocuMindAI"],
-  "Next.js": ["SyncStream"],
   JUnit: ["Flipkart"],
   Mockito: ["Flipkart"],
+  React: ["Flipkart", "DocuMindAI"],
+  "Next.js": ["SyncStream"],
+  "scikit-learn": ["AT&T"],
+  XGBoost: ["AT&T"],
+  MLflow: ["AT&T", "DocuMindAI"],
+  LLMs: ["TARS", "DocuMindAI"],
+  RAG: ["DocuMindAI"],
+  "Vector search (Qdrant, FAISS)": ["DocuMindAI"],
 };
 
 // ─── 04 · About ──────────────────────────────────────────────────────────────
@@ -283,7 +285,7 @@ export const ABOUT = {
   ],
   facts: [
     { k: "Now", v: "Software Engineer, Distributed Systems — AT&T" },
-    { k: "Studied", v: "M.S. Computer Science — NJIT, 2025" },
+    { k: "Studied", v: "M.S. Computer Science — NJIT, 2025 · GPA 3.93" },
     { k: "Based", v: "Jersey City, NJ — open to relocation" },
     { k: "Looking", v: "AI/ML systems, SDE, systems engineering" },
   ],
@@ -292,7 +294,7 @@ export const ABOUT = {
       school: "New Jersey Institute of Technology",
       degree: "M.S. Computer Science",
       time: "2023 — 2025",
-      detail: "Distributed systems · Deep learning · ML & MLOps",
+      detail: "GPA 3.93 / 4.0 · Distributed systems · Deep learning · ML & MLOps",
     },
     {
       school: "Kommuri Pratap Reddy Institute of Technology",

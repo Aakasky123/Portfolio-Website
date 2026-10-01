@@ -204,7 +204,7 @@ export default function VisionLayer() {
         <div className="vision__hud">
           <span className="vision__title">
             <span className="vision__rec" />
-            {intro ? (booting ? "Astra · observing page" : "Handing control to human") : "Agent vision"}
+            {intro ? (booting ? "TARS · observing page" : "Handing control to human") : "Agent vision"}
           </span>
           <span className="vision__stats" ref={hudRef} />
           {!intro && (

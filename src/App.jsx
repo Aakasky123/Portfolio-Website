@@ -24,7 +24,7 @@ export default function App() {
   // A note for whoever opens the console.
   useEffect(() => {
     console.log(
-      "%c▲ Astra %c you opened the console, which is exactly what an agent would do.\n%cAakash builds agents and the systems under them. Say hi: aakash.siricilla02@gmail.com",
+      "%c TARS %c you opened the console, which is exactly what an agent would do.\n%cAakash builds agents and the systems under them. Say hi: aakash.siricilla02@gmail.com",
       "background:#ff4f12;color:#121211;padding:2px 6px;font-weight:600",
       "color:inherit",
       "color:#888"

@@ -53,7 +53,7 @@ function buildPlan() {
     },
     {
       id: "resume", ax: 0.5, ay: 0.55, role: "link · pdf", hover: true,
-      plan: "inspect link", tag: "OBS", say: "Aakash_Resume.pdf · 87 KB", verify: "href ✓ same-origin",
+      plan: "inspect link", tag: "OBS", say: "Aakash_Resume.pdf · 31 KB", verify: "href ✓ same-origin",
     },
     {
       id: "stat-1", ax: 0.3, ay: 0.4, role: "metric",
@@ -315,7 +315,7 @@ export default function HeroAgent({ heroRef }) {
         <span className="apointer__ring" />
         <CursorMark className="apointer__mark" />
         <span className="apointer__tag" ref={tagRef}>
-          <span className="apointer__who">Astra</span>
+          <span className="apointer__who">TARS</span>
           <span className="apointer__step" data-tag={caption.tag}>
             <b>{caption.tag}</b> {caption.text}
           </span>

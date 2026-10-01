@@ -4,7 +4,7 @@ import { useReveal } from "../lib/hooks";
 import Chapter from "./Chapter";
 import "./stack.css";
 
-const WHERE = ["AT&T", "Flipkart", "Astra", "DocuMindAI", "SyncStream"];
+const WHERE = ["AT&T", "Flipkart", "TARS", "DocuMindAI", "SyncStream"];
 
 export default function StackSection() {
   const [where, setWhere] = useState(null);

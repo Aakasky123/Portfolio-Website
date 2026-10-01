@@ -6,7 +6,7 @@ import SyncStream from "./SyncStream";
 import "./systems.css";
 
 // Wrap numbers in the log so the outcomes scan at a glance.
-const NUM = /((?<![A-Za-z])~?\d[\d,.]*(?:\s?(?:%|(?:ms|k|M|x|RPS|hours|min)\b))?(?:\/(?:day|month|week))?|<\s?10 min)/g;
+const NUM = /((?<![A-Za-z+\d.,])~?\d[\d,.]*(?:\s?(?:%|(?:ms|k|M|x|RPS|hours|minutes|min)\b))?(?:\/(?:day|month|week))?)/g;
 function highlight(text) {
   const parts = text.split(NUM);
   return parts.map((p, i) => (i % 2 ? <b key={i}>{p}</b> : p));

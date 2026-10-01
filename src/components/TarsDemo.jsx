@@ -3,9 +3,9 @@ import { DEMO, SITE } from "../data/content";
 import { glide, isAbort, sleep, travelTime } from "../lib/motion";
 import { useReducedMotion } from "../lib/hooks";
 import CursorMark from "./CursorMark";
-import "./astra.css";
+import "./tars.css";
 
-// A scripted run of Astra filling in a job application: Aakash's, addressed
+// A scripted run of TARS filling in a job application: Aakash's, addressed
 // to whoever is reading. It stops at the submit button and waits for a human.
 
 const F = DEMO.fields;
@@ -78,7 +78,7 @@ function Field({ id, label, wide, children, state, fieldRefs, box }) {
   );
 }
 
-export default function AstraDemo() {
+export default function TarsDemo() {
   const [state, dispatch] = useReducer(reducer, initial);
   const [run, setRun] = useState(0);
   const reduced = useReducedMotion();
@@ -297,10 +297,10 @@ export default function AstraDemo() {
   }[status];
 
   return (
-    <div className="astra" ref={rootRef}>
-      <div className="astra__stage">
-        {/* The screen Astra is operating */}
-        <div className="astra__screen" ref={screenRef} data-shot={state.shot > 0} aria-hidden>
+    <div className="tars" ref={rootRef}>
+      <div className="tars__stage">
+        {/* The screen TARS is operating */}
+        <div className="tars__screen" ref={screenRef} data-shot={state.shot > 0} aria-hidden>
           <div className="fx-chrome">
             <span className="fx-url" data-agent="url">
               <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden>
@@ -388,12 +388,12 @@ export default function AstraDemo() {
           </div>
 
           {!reduced && (
-            <div className="apointer astra__pointer" ref={pointerRef}>
+            <div className="apointer tars__pointer" ref={pointerRef}>
               <span className="apointer__ring" />
               <CursorMark className="apointer__mark" />
             </div>
           )}
-          <div className="astra__viewfinder" />
+          <div className="tars__viewfinder" />
         </div>
 
         {/* Approval gate: outside the aria-hidden screen so it's reachable */}
@@ -403,7 +403,7 @@ export default function AstraDemo() {
               <span className="gate__pulse" aria-hidden /> Approval required
             </p>
             <h4 id="gate-title" className="gate__title">
-              Astra wants to click <em>“Submit application.”</em>
+              TARS wants to click <em>“Submit application.”</em>
             </h4>
             <p id="gate-desc" className="gate__desc">
               Submitting can’t be undone, so the agent won’t do it on its own. It will wait for as long as you take.
@@ -420,10 +420,10 @@ export default function AstraDemo() {
         )}
         {status === "idle" && reduced && (
           <div className="gate gate--start">
-            <p className="gate__desc">Watch Astra fill in a job application, step by step.</p>
+            <p className="gate__desc">Watch TARS fill in a job application, step by step.</p>
             <div className="gate__actions">
               <button type="button" className="btn btn--ink" onClick={replay}>
-                Run Astra
+                Run TARS
               </button>
             </div>
           </div>
@@ -431,9 +431,9 @@ export default function AstraDemo() {
       </div>
 
       {/* The trace */}
-      <aside className="astra__trace" aria-label="Agent trace">
+      <aside className="tars__trace" aria-label="Agent trace">
         <div className="trace__head">
-          <span className="label trace__title">Astra · trace</span>
+          <span className="label trace__title">TARS · trace</span>
           <span className="label trace__run num">{state.runId || "run —"}</span>
           <span className="trace__status" data-status={status}>
             <i aria-hidden />
@@ -472,7 +472,7 @@ export default function AstraDemo() {
             </dl>
             <div className="receipt__actions">
               {status === "approved" ? (
-                <a className="btn btn--ink" href={`mailto:${SITE.email}?subject=${encodeURIComponent("Saw Astra apply — let's talk")}`}>
+                <a className="btn btn--ink" href={`mailto:${SITE.email}?subject=${encodeURIComponent("Saw TARS apply — let's talk")}`}>
                   Make it official <span className="btn__arrow" aria-hidden>→</span>
                 </a>
               ) : (
@@ -499,7 +499,7 @@ export default function AstraDemo() {
       </aside>
 
       <p className="sr-only" aria-live="polite">
-        {status === "gate" && "Astra has filled in the application and is waiting for your approval to submit it."}
+        {status === "gate" && "TARS has filled in the application and is waiting for your approval to submit it."}
         {status === "approved" && "Application submitted after your approval."}
         {status === "denied" && "Submission denied. Nothing was sent."}
       </p>

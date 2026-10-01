@@ -18,10 +18,10 @@ export default function Footer() {
         <div className="footer__col">
           <p className="label">About the agent</p>
           <p>
-            The Astra on this page is a simulation, and like the real one, it asks before it does anything that
-            matters. The real one is{" "}
-            <a className="link" href="https://github.com/Aakasky123/ApplyPilotAI" target="_blank" rel="noreferrer">
-              on GitHub
+            The TARS on this page is a simulation, and like the real one, it asks before it does anything that
+            matters. Want to see the real one?{" "}
+            <a className="link" href="#contact">
+              Ask for a walkthrough
             </a>
             .
           </p>
